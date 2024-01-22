@@ -81,7 +81,7 @@
                 <div id="navmenu">
                     <ul class="navbar-nav">
                         <li class="nav item">
-                            <a href="header.php" class="kembali">Kembali</a>
+                            <a href="dashboard.php" class="kembali">Kembali</a>
                         </li>
                     </ul>
                 </div>
