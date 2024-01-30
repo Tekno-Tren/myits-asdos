@@ -99,6 +99,7 @@ if( isset($_POST["login"]) ) {
 		    border-radius:10px;
 		    background-color:#809CC0
 		}
+		
 		.container h1{
 		    text-align:center;
 		    color:black;

@@ -35,8 +35,8 @@ if (isset($_POST["login"])) {
         </div>
     </nav>
     <!-- Nama Asdos-->
-    <div class="mb-2 border-rad-0 mx-0 px-0">
-        <div class="">
+    <div class="">
+        <div class="mb-2 border-rad-0 mx-0 px-0">
             <p>Hallo,</p>
             <h3> Diva </h3>
         </div>
@@ -58,24 +58,14 @@ if (isset($_POST["login"])) {
     <div class="d-flex flex-column">
         <div class="card card-body">
         <p style="font-weight: bold;">Section 1</p>
-            <p style="font-size: 15px; text-decoration: underline;" class="tugas1"><a href="">Tugas asdos mengupload file berisi nilai mahasiswa sesudah ETS</a></p>
+            <p style="font-size: 15px; text-decoration: underline;" class="tugas1"><a href="section1.php">Tugas asdos mengupload file berisi nilai mahasiswa sebelum ETS</a></p>
         </div>
         <div class="card card-body">
-            <p style="font-weight: bold;">Section 1</p>
-            <p style="font-size: 15px; text-decoration: underline;" class="tugas1"><a href="">Tugas asdos mengupload file berisi nilai mahasiswa sesudah ETS</a></p>
+            <p style="font-weight: bold;">Section 2</p>
+            <p style="font-size: 15px; text-decoration: underline;" class="tugas2"><a href="section2.php">Tugas asdos mengupload file berisi nilai mahasiswa sesudah ETS</a></p>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <p style="font-weight: bold;">Section 1</p>
-            <p style="font-size: 15px; text-decoration: underline;" class="tugas1"><a href="">Tugas asdos mengupload file berisi nilai mahasiswa sesudah ETS</a></p>
-        </div>
-        <div class="col">
-            <p style="font-weight: bold;">Section 1</p>
-            <p style="font-size: 15px; text-decoration: underline;" class="tugas1"><a href="">Tugas asdos mengupload file berisi nilai mahasiswa sesudah ETS</a></p>
-        </div>
-    </div>
 
     </div>
     </div>
