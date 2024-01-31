@@ -6,7 +6,7 @@
     <div class="">
         <div class="mb-2 border-rad-0 mx-5 px-0">
             <h5>Hallo,</h5>
-            <h3> Diva </h3>
+            <h3> {{ Auth::user()->nama }} </h3>
         </div>
     </div>
 

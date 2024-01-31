@@ -23,15 +23,15 @@
                             <p class="text-red-500 text-sm mt-2">{{ $errors->get('password') }}</p>
                     @enderror --}}
                </div>
-        
-                
+
+
                 <!-- <div class="display: flex; color:#013880">
                     <label for="remember" class="card-text">Remember me</label>
                     <input type="checkbox" name="remember" id="remember" >
                 </div> -->
-        
+
                 <button type="submit" name="login" class="btn btn-primary">Login</button>
-        
+
                 <div class="flex items-center justify-end mt-4">
                     @if (Route::has('password.request'))
                         <a class="" href="{{ route('password.request') }}">
@@ -40,6 +40,7 @@
                     @endif
                 </div>
             </form>
+            <a href="{{route('register')}}">Register</a>
         </div>
     </div>
 </div>

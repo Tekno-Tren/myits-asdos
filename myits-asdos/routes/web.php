@@ -6,6 +6,7 @@ use App\Http\Controllers\MateriController;
 use App\Http\Controllers\MatkulController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\BuktiController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisController;
 
 use Illuminate\Support\Facades\Route;
@@ -28,9 +29,7 @@ Route::get('/', function () {
 // Pertemuan
 // End of pertemuan
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
 

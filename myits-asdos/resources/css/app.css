@@ -24,7 +24,19 @@ a {
 
 /* End of Bootstrap Custom */
 
+/*button */
+.btn-primary {
+    background-color: #96E9C6 !important;
+ }
 
+ .btn.hisa-button {
+    background-color: #bacfe6;
+    width: 35px; /* Sesuaikan lebar dengan tinggi untuk membuatnya menjadi lingkaran */
+    height: 35px; /* Sesuaikan tinggi dengan lebar untuk membuatnya menjadi lingkaran */
+    border-radius: 50%; /* Membuat sudut menjadi bundar untuk membuatnya menjadi lingkaran */
+    text-align: center; /* Pusatkan teks secara horizontal */
+    align-items: center; /* Pusatkan secara vertikal */
+}
 /* Style Registrasi */
 .registrasi-container{
     background-color:#013880 !important;
@@ -195,13 +207,7 @@ li {
     float: left;
 }
 
-.hisa-button {
-    width: 30px;
-    height: 30px;
-    background-color: #bacfe6;
-    border-radius: 50%;
-    cursor: pointer;
-}
+
 
 .table{
     background-color: #013880;

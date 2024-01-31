@@ -22,17 +22,6 @@
             .button-row {
                 display: flex;
             }
-
-            .hisa-button {
-                width: 30px;
-                height: 30px;
-                background-color: #bacfe6;
-                border-radius: 50%;
-                /* Membuat tombol berbentuk bulat */
-                cursor: pointer;
-                margin-right: 10px;
-                /* Jarak antara tombol */
-            }
         </style>
 
         <div class="container mb-3">
@@ -143,240 +132,45 @@
 
         <div class="container">
             <div class="card card-body card-matkul">
-                <table border="0" width="100%" style="border-collapse: collapse ">
-                    <tr>
-                        <th>TATAP MUKA</th>
-                        <th>JADWAL</th>
-                        <th>STATUS KEHADIRAN</th>
-                        <th>KETERANGAN</th>
-                    </tr>
-                    <tr>
-                        <td rowspan="3" align="center">1</td>
-                        <td align="center">Senin, 26 Februari 2024</td>
-                        <td rowspan="3" align="left">
-                            <div class="vertical-buttons">
-                                <button class="hisa-button" onclick="changeColor(this, 1)">H</button>
-                                <button class="hisa-button" onclick="changeColor(this, 1)">I</button>
-                                <button class="hisa-button" onclick="changeColor(this, 1)">S</button>
-                                <button class="hisa-button" onclick="changeColor(this, 1)">A</button>
-                            </div>
-                        </td>
+                <table class="table" border="0" width="100%" style="border-collapse: collapse ">
+                    <thead>
+                        <tr>
+                            <th class="text-center">TATAP MUKA</th>
+                            <th class="text-center">JADWAL</th>
+                            <th class="text-center">STATUS KEHADIRAN</th>
+                            <th class="text-center">KETERANGAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3" align="center">1</td>
+                            <td align="center">
+                                <div>
+                                    <p>Senin, 26 Februari 2024</p>
+                                    <p>Jam</p>
+                                    <p>Ruang</p>
+                                </div>
+                            </td>
+                            <td rowspan="3" align="center">
+                                <div class="vertical-buttons">
+                                    <button type="button" class="btn btn-primary" onclick="changeColor(this, 1)">H</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
+                                </div>
+                            </td>
 
-                        <td rowspan="3" align="center">
-                            <button id="buttonmateri" style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                                <a href="materi">Materi</a></button>
-                            <br />
-                            <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"><a href="bukti">Foto
-                                    Kehadiran</a></button>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">09.00-10.50</td>
-                    </tr>
-                    <tr>
-                        <td align="center">TW1-803</td>
-                    </tr>
-
-                    <td rowspan="3" align="center">2</td>
-                    <td align="center">Senin, 26 Februari 2024</td>
-                    <td rowspan="3" align="left">
-                        <div class="vertical-buttons">
-                            <button class="hisa-button" onclick="changeColor(this, 1)">H</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">I</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">S</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">A</button>
-                        </div>
-                    </td>
-
-                    <td rowspan="3" align="center">
-                        <button id="buttonmateri" style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                            <a href="materi">Materi</a></button>
-                        <br />
-                        <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"><a href="bukti">Foto
-                                Kehadiran</a></button>
-
-                    </td>
-                    </tr>
-                    <tr>
-                        <td align="center">09.00-10.50</td>
-                    </tr>
-                    <tr>
-                        <td align="center">TW1-803</td>
-                    </tr>
-
-                    <td rowspan="3" align="center">3</td>
-                    <td align="center">Senin, 26 Februari 2024</td>
-                    <td rowspan="3" align="left">
-                        <div class="vertical-buttons">
-                            <button class="hisa-button" onclick="changeColor(this, 1)">H</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">I</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">S</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">A</button>
-                        </div>
-                    </td>
-
-                    <td rowspan="3" align="center">
-                        <button id="buttonmateri" style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                            <a href="materi">Materi</a></button>
-                        <br />
-                        <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"><a href="bukti">Foto
-                                Kehadiran</a></button>
-
-                    </td>
-                    </tr>
-                    <tr>
-                        <td align="center">09.00-10.50</td>
-                    </tr>
-                    <tr>
-                        <td align="center">TW1-803</td>
-                    </tr>
-
-                    <td rowspan="3" align="center">4</td>
-                    <td align="center">Senin, 26 Februari 2024</td>
-                    <td rowspan="3" align="left">
-                        <div class="vertical-buttons">
-                            <button class="hisa-button" onclick="changeColor(this, 1)">H</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">I</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">S</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">A</button>
-                        </div>
-                    </td>
-
-                    <td rowspan="3" align="center">
-                        <button id="buttonmateri" style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                            <a href="materi">Materi</a></button>
-                        <br />
-                        <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"><a href="bukti">Foto
-                                Kehadiran</a></button>
-
-                    </td>
-                    </tr>
-                    <tr>
-                        <td align="center">09.00-10.50</td>
-                    </tr>
-                    <tr>
-                        <td align="center">TW1-803</td>
-                    </tr>
-
-                    <td rowspan="3" align="center">5</td>
-                    <td align="center">Senin, 26 Februari 2024</td>
-                    <td rowspan="3" align="left">
-                        <div class="vertical-buttons">
-                            <button class="hisa-button" onclick="changeColor(this, 1)">H</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">I</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">S</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">A</button>
-                        </div>
-                    </td>
-
-                    <td rowspan="3" align="center">
-                        <button id="buttonmateri" style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                            <a href="materi">Materi</a></button>
-                        <br />
-                        <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"><a href="bukti">Foto
-                                Kehadiran</a></button>
-
-                    </td>
-                    </tr>
-                    <tr>
-                        <td align="center">09.00-10.50</td>
-                    </tr>
-                    <tr>
-                        <td align="center">TW1-803</td>
-                    </tr>
-
-                    <td rowspan="3" align="center">6</td>
-                    <td align="center">Senin, 26 Februari 2024</td>
-                    <td rowspan="3" align="left">
-                        <div class="vertical-buttons">
-                            <button class="hisa-button" onclick="changeColor(this, 1)">H</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">I</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">S</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">A</button>
-                        </div>
-                    </td>
-
-                    <td rowspan="3" align="center">
-                        <button id="buttonmateri" style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                            <a href="materi">Materi</a></button>
-                        <br />
-                        <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"><a href="bukti">Foto
-                                Kehadiran</a></button>
-
-                    </td>
-                    </tr>
-                    <tr>
-                        <td align="center">09.00-10.50</td>
-                    </tr>
-                    <tr>
-                        <td align="center">TW1-803</td>
-                    </tr>
-
-                    <td rowspan="3" align="center">7</td>
-                    <td align="center">Senin, 26 Februari 2024</td>
-                    <td rowspan="3" align="left">
-                        <div class="vertical-buttons">
-                            <button class="hisa-button" onclick="changeColor(this, 1)">H</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">I</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">S</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">A</button>
-                        </div>
-                    </td>
-
-                    <td rowspan="3" align="center">
-                        <button id="buttonmateri" style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                            <a href="materi">Materi</a></button>
-                        <br />
-                        <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"><a href="bukti">Foto
-                                Kehadiran</a></button>
-
-                    </td>
-                    </tr>
-                    <tr>
-                        <td align="center">09.00-10.50</td>
-                    </tr>
-                    <tr>
-                        <td align="center">TW1-803</td>
-                    </tr>
-
-                    <td rowspan="3" align="center">8</td>
-                    <td align="center">Senin, 26 Februari 2024</td>
-                    <td rowspan="3" align="left">
-                        <div class="vertical-buttons">
-                            <button class="hisa-button" onclick="changeColor(this, 1)">H</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">I</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">S</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">A</button>
-                        </div>
-                    </td>
-
-                    <td rowspan="3" align="center">
-                        <button id="buttonmateri" style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                            <a href="materi">Materi</a></button>
-                        <br />
-                        <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"><a href="bukti">Foto
-                                Kehadiran</a></button>
-
-                    </td>
-                    </tr>
-                    <tr>
-                        <td align="center">09.00-10.50</td>
-                    </tr>
-                    <tr>
-                        <td align="center">TW1-803</td>
-                    </tr>
-
-
-
-
-
-
-
-
-
-
-
+                            <td rowspan="3" align="center">
+                                <button id="buttonmateri"
+                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
+                                    <a href="materi">Materi</a></button>
+                                <br />
+                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"><a
+                                        href="bukti">Foto
+                                        Kehadiran</a></button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -391,7 +185,7 @@
             var parentElement = button.parentElement;
 
             // Mendapatkan koleksi tombol dalam grup
-            var buttonsInGroup = parentElement.querySelectorAll('.hisa-button');
+            var buttonsInGroup = parentElement.querySelectorAll('.btn');
 
             // Toggle: mengembalikan warna semua tombol dalam grup ke warna asal jika tombol yang diklik sudah berwarna hijau
             if (button.style.backgroundColor === 'green') {

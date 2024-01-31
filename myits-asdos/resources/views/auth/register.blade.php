@@ -4,33 +4,52 @@
 
         <!-- Name -->
         <div class="mb-3">
-            <label for="name" class="card-text">Name :</label>
-            <input type="text" name="name" id="name" class="form-control">
-            {{-- @error('email')
-                <p class="text-red-500 text-sm mt-1">{{ $errors->get('email') }}</p>
-            @enderror --}}
+            <label for="nama" class="card-text">Nama :</label>
+            <input type="text" name="nama" id="nama" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="nrp" class="card-text">Username/NRP :</label>
-            <input type="text" name="username" id="nrp" class="form-control">
-            {{-- @error('email')
-                <p class="text-red-500 text-sm mt-1">{{ $errors->get('email') }}</p>
-            @enderror --}}
+            <label for="nrp" class="card-text">NRP :</label>
+            <input type="text" name="nrp" id="nrp" class="form-control">
+        </div>
+        <div class="mb-3">
+                <label for="departemen" class="card-text">Departemen :</label>
+                <input type="text" name="departemen" id="departemen" class="form-control">
+        </div>
+        <div class="mb-3">
+                <label for="telp" class="card-text">Telepon :</label>
+                <input type="text" name="telp" id="telp" class="form-control">
+        </div>
+        <div class="mb-3">
+                <label for="bank" class="card-text">BANK :</label>
+                <input type="text" name="bank" id="bank" class="form-control">
+        </div>
+        <div class="mb-3">
+                <label for="norek" class="card-text">Nomor Rekening :</label>
+                <input type="text" name="norek" id="norek" class="form-control">
+        </div>
+        <div class="mb-3">
+                <label for="nik" class="card-text">NIK :</label>
+                <input type="text" name="nik" id="nik" class="form-control">
+        </div>
+        <div class="mb-3">
+                <label for="alamat" class="card-text">Alamat :</label>
+                <input type="text" name="alamat" id="alamat" class="form-control">
         </div>
         <div class="mb-3">
                 <label for="password" class="card-text">Password :</label>
                 <input type="password" name="password" id="password" class="form-control">
-                {{-- @error('password')
-                        <p class="text-red-500 text-sm mt-2">{{ $errors->get('password') }}</p>
-                @enderror --}}
+        </div>
+        <div class="mb-3">
+                <label for="password" class="card-text">Konfirmasi Password :</label>
+                <input type="password" name="password" id="password" class="form-control">
         </div>
 
-        
+
         <!-- <div class="display: flex; color:#013880">
             <label for="remember" class="card-text">Remember me</label>
             <input type="checkbox" name="remember" id="remember" >
         </div> -->
 
-        <button type="submit" name="login" class="btn btn-primary">Login</button>
+        <button type="submit" name="login" class="btn btn-primary">Register</button>
     </form>
 </x-guest-layout>
