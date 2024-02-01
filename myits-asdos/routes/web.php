@@ -29,7 +29,9 @@ Route::get('/', function () {
 // Pertemuan
 // End of pertemuan
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
 
@@ -39,7 +41,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/materi', [MateriController::class, 'index'])->name('materi.index');
 
-    Route::get('/matkul', [MatkulController::class, 'index'])->name('matkul.index');
+    Route::get('/mata-kuliah/{id}', [MatkulController::class, 'index'])->name('mata-kuliah.index');
 
     Route::get('/section', [SectionController::class, 'index'])->name('section.index');
 

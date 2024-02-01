@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand d-flex justify-content-between pb-3">
-    <a href="#" class="navbar-brand">PRESENSI ASISTEN DOSEN</a>
+    <a href="{{ route('dashboard') }}" class="navbar-brand" style="padding: 5px 0px 0px 20px">PRESENSI ASISTEN DOSEN</a>
     <div id="navmenu">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" style="padding: 5px 20px 0px 0px">
             <li class="nav item">
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf

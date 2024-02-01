@@ -3,9 +3,9 @@
 
     <body style="background-color: #bacfe6">
         <section>
-            <article class="custom-matkul mx-5">
-                <h1 style="font-size: 20px">Nama Matakuliah</h1>
-                <p style="font-size: 20px">Nama Dosen</p>
+            <article class="custom-matkul mx-5 mt-3 mb-2">
+                <h1 style="font-size: 20px">{{ $matkul->nama }}</h1>
+                <p style="font-size: 20px">{{ $matkul->nama_dosen }}</p>
             </article>
         </section>
         <style>
@@ -153,7 +153,7 @@
                             </td>
                             <td rowspan="3" align="center">
                                 <div class="vertical-buttons">
-                                    <button type="button" class="btn btn-primary" onclick="changeColor(this, 1)">H</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
                                     <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
                                     <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
                                     <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>

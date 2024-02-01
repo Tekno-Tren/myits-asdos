@@ -4,7 +4,7 @@
 <body style="background-color: #bacfe6">
     <!-- Nama Asdos-->
     <div class="">
-        <div class="mb-2 border-rad-0 mx-5 px-0">
+        <div class="mt-3 mb-2 border-rad-0 mx-5 px-0">
             <h5>Hallo,</h5>
             <h3> {{ Auth::user()->nama }} </h3>
         </div>
@@ -15,10 +15,9 @@
         <div class="card">
             <div class="card-body">
                 <p style="font-weight: bold;">Daftar Mata Kuliah</p>
-                <ul style="list-style: none">
-                    <li><a href="matkul">Mata Kuliah (kelas)</a></li>
-                    <li><a href="matkul">Mata Kuliah (kelas)</a></li>
-                </ul>
+                    @foreach($kelas as $kelasItem)
+                    <p><a href="{{ route('mata-kuliah.index', $kelasItem->id) }}">- {{ $kelasItem->nama }}</a></p>
+                    @endforeach
             </div>
         </div>
 

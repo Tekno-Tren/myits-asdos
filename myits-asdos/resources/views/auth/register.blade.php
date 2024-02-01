@@ -8,8 +8,8 @@
             <input type="text" name="nama" id="nama" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="nrp" class="card-text">NRP :</label>
-            <input type="text" name="nrp" id="nrp" class="form-control">
+            <label for="username" class="card-text">username :</label>
+            <input type="text" name="username" id="username" class="form-control">
         </div>
         <div class="mb-3">
                 <label for="departemen" class="card-text">Departemen :</label>

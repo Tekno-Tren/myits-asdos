@@ -18,7 +18,7 @@ class DashboardController extends BaseController
 
         // Mengambil data kelas berdasarkan user_id
         $kelas = Kelas::where('user_id', $userId)->get();
-        //dd($kelas);
+        // dd($kelas);
         // Menampilkan view dashboard dan mengirim data kelas ke dalam view
         return view('dashboard', compact('kelas'));
     }
