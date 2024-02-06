@@ -15,7 +15,7 @@
                         <h4 class="font-bold text-3xl text-dark mt-6">BUKTI KEHADIRAN</h4>
                         <h2 class="font-bold text-xl text-slate-400">Upload Foto</h2>
                     </div>
-                    <form action="bukti" method="post" enctype="multipart/form-data">
+                    <form action="bukti" method="POST" enctype="multipart/form-data">
                         <div class="w-full px-4 mb-4">
                             <h1>Silahkan upload foto di kelas sebagai bukti kehadiran</h1>
                             <h2>Format : Nama_Kelas_Buktikehadiran</h2>

@@ -5,22 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kelas extends Model
+class Materi extends Model
 {
     use HasFactory;
 
-    protected $table ='kelas';
+    protected $table ='materi';
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
-        'nama',
-        'waktu',
-        'waktu',
+        'materi',
         'user_id',
+        'kelas_id',
     ];
 
     public function users()
     {
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+    public function kelas()
+    {
+        return $this->belongsTo('App\Models\Kelas', 'kelas_id', 'id');
     }
 }

@@ -32,7 +32,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
-            'nrp' => ['required', 'string'],
+            'username' => ['required', 'string'],
             'departemen' => ['required', 'string'],
             'telp' => ['required', 'string'],
             'bank' => ['required', 'string'],
@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
 
         $user = User::create([
             'nama' => $request->nama,
-            'nrp' => $request->nrp,
+            'username' => $request->username,
             'departemen' => $request->departemen,
             'telp' => $request->telp,
             'bank' => $request->bank,

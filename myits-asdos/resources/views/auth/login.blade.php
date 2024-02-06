@@ -1,17 +1,17 @@
 <x-guest-layout>
-
-<div class="container d-flex align-items-center my-auto">
-    <div class="card">
+    <body style="background-color: #013880">
+<div class="container d-flex align-items-center my-auto justify-content-center" style="height: 100vh">
+    <div class="card " style=" width: 400px;max-width: 80% " >
         <div class="card-body">
-            <h1>Login</h1>
+            <h1 style="text-align: center">Login</h1>
 
             {{-- Nanti buat alert manual --}}
             {{-- <x-auth-session-status class="mb-4" :status="session('status')" /> --}}
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="mb-3">
-                    <label for="nrp" class="card-text">NRP :</label>
-                    <input type="text" name="username" id="nrp" class="form-control">
+                    <label for="username" class="card-text">NRP :</label>
+                    <input type="text" name="username" id="username" class="form-control">
                     {{-- @error('email')
                         <p class="text-red-500 text-sm mt-1">{{ $errors->get('email') }}</p>
                     @enderror --}}
@@ -30,7 +30,8 @@
                     <input type="checkbox" name="remember" id="remember" >
                 </div> -->
 
-                <button type="submit" name="login" class="btn btn-primary">Login</button>
+                <button type="submit" name="login" class="btn btn-primary" style="width: 400px; max-width: 100%">Login</button>
+                <button type="submit" name="register" class="btn btn-warning mt-2" style="width: 400px; max-width: 100%"><a href="{{ route('register') }}">Register</a></button>
 
                 <div class="flex items-center justify-end mt-4">
                     @if (Route::has('password.request'))
@@ -40,8 +41,9 @@
                     @endif
                 </div>
             </form>
-            <a href="{{route('register')}}">Register</a>
+            {{-- <a href="{{route('register')}}">Register</a> --}}
         </div>
     </div>
 </div>
+</body>
 </x-guest-layout>

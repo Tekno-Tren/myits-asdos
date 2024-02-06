@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <script src="https://cdn.tailwind.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <body style="background-color: #bacfe6">

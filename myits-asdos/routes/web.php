@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/materi', [MateriController::class, 'index'])->name('materi.index');
 
-    Route::get('/matkul', [MatkulController::class, 'index'])->name('matkul.index');
+    Route::get('/matkul/{id}', [MatkulController::class, 'index'])->name('matkul.index');
 
     Route::get('/section', [SectionController::class, 'index'])->name('section.index');
 

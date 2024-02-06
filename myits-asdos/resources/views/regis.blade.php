@@ -18,14 +18,15 @@ if (isset($_POST["register"])) {
     }
 }
 ?>
-</body>
+
+
 <head>
 	<title>Halaman Registrasi</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require ($dir . '/base/head.php') ?>
 </head>
-<body>
+<body style="background-color: #bacfe6">
 	<div class="registrasi-container d-flex flex-column align-items-center px-3 pt-5 pb-5 ">
 	<div class="form-container ">
 	<h1>Halaman Registrasi</h1>

@@ -3,9 +3,9 @@
 
     <body style="background-color: #bacfe6">
         <section>
-            <article class="custom-matkul mx-5">
-                <h1 style="font-size: 20px">Nama Matakuliah</h1>
-                <p style="font-size: 20px">Nama Dosen</p>
+            <article class="custom-matkul mx-5" style="background-color :#bacfe6">
+                <h1 style="font-size: 20px">{{ $data->nama }}</h1>
+                <p style="font-size: 20px">{{ $data->nama_dosen }}</p>
             </article>
         </section>
         <style>
@@ -21,6 +21,20 @@
 
             .button-row {
                 display: flex;
+            }
+
+            .btn.hisa-button {
+                background-color: #bacfe6;
+                width: 35px;
+                /* Sesuaikan lebar dengan tinggi untuk membuatnya menjadi lingkaran */
+                height: 35px;
+                /* Sesuaikan tinggi dengan lebar untuk membuatnya menjadi lingkaran */
+                border-radius: 50%;
+                /* Membuat sudut menjadi bundar untuk membuatnya menjadi lingkaran */
+                text-align: center;
+                /* Pusatkan teks secara horizontal */
+                align-items: center;
+                /* Pusatkan secara vertikal */
             }
         </style>
 
@@ -51,85 +65,6 @@
             </div>
         </div>
 
-
-        <div class="container">
-            <div class="card mx-4">
-                <div class="card-body d-flex flex-wrap justify-content-between">
-                    <div class="d-flex flex-column align-items-center">
-                        <h6 class="fs-6">TATAP MUKA</h6>
-                        <p>1</p>
-                    </div>
-                    <div class="d-flex flex-column align-items-center">
-                        <h6 class="fs-6">JADWAL</h6>
-                        <p>Tanggal</p>
-                        <p>Jam</p>
-                        <p>Ruang</p>
-                    </div>
-
-                    <div class="button1">
-                        <h6 class="fs-6">STATUS KEHADIRAN</h6>
-                        <div class="button-row">
-                            <button class="hisa-button" onclick="changeColor(this, 1)">H</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">I</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">S</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">A</button>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-column align-items-center">
-                        <h6 class="fs-6">KETERANGAN</h6>
-                        <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"><a
-                                href="materi">Materi</button>
-                        <button style="width: 125px; background-color: #bacfe6"><a href="bukti">Foto
-                                Kehadiran</a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container mb-3">
-            <div class="card mx-4">
-                <div class="card-body d-flex flex-wrap justify-content-between">
-                    <div class="d-flex flex-column align-items-center">
-                        <h6 class="fs-6">TATAP MUKA</h6>
-                        <p>2</p>
-                    </div>
-                    <div class="d-flex flex-column align-items-center">
-                        <h6 class="fs-6">JADWAL</h6>
-                        <p>Tanggal</p>
-                        <p>Jam</p>
-                        <p>Ruang</p>
-                    </div>
-
-                    <div class="button1">
-                        <h6 class="fs-6">STATUS KEHADIRAN</h6>
-                        <div class="button-row">
-                            <button class="hisa-button" onclick="changeColor(this, 1)">H</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">I</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">S</button>
-                            <button class="hisa-button" onclick="changeColor(this, 1)">A</button>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-column align-items-center">
-                        <h6 class="fs-6">KETERANGAN</h6>
-                        <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"><a
-                                href="materi">Materi</button>
-                        <button style="width: 125px; background-color: #bacfe6"><a href="bukti">Foto
-                                Kehadiran</a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-
         <div class="container">
             <div class="card card-body card-matkul">
                 <table class="table" border="0" width="100%" style="border-collapse: collapse ">
@@ -153,7 +88,7 @@
                             </td>
                             <td rowspan="3" align="center">
                                 <div class="vertical-buttons">
-                                    <button type="button" class="btn btn-primary" onclick="changeColor(this, 1)">H</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
                                     <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
                                     <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
                                     <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
@@ -163,14 +98,235 @@
                             <td rowspan="3" align="center">
                                 <button id="buttonmateri"
                                     style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                                    <a href="materi">Materi</a></button>
-                                <br />
-                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"><a
-                                        href="bukti">Foto
-                                        Kehadiran</a></button>
+                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                <br>
+                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
+                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
+
+                    <tbody>
+                        <tr>
+                            <td rowspan="3" align="center">2</td>
+                            <td align="center">
+                                <div>
+                                    <p>Senin, 26 Februari 2024</p>
+                                    <p>Jam</p>
+                                    <p>Ruang</p>
+                                </div>
+                            </td>
+                            <td rowspan="3" align="center">
+                                <div class="vertical-buttons">
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
+                                </div>
+                            </td>
+
+                            <td rowspan="3" align="center">
+                                <button id="buttonmateri"
+                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
+                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                <br>
+                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
+                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3" align="center">3</td>
+                            <td align="center">
+                                <div>
+                                    <p>Senin, 26 Februari 2024</p>
+                                    <p>Jam</p>
+                                    <p>Ruang</p>
+                                </div>
+                            </td>
+                            <td rowspan="3" align="center">
+                                <div class="vertical-buttons">
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
+                                </div>
+                            </td>
+
+                            <td rowspan="3" align="center">
+                                <button id="buttonmateri"
+                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
+                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                <br>
+                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
+                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3" align="center">4</td>
+                            <td align="center">
+                                <div>
+                                    <p>Senin, 26 Februari 2024</p>
+                                    <p>Jam</p>
+                                    <p>Ruang</p>
+                                </div>
+                            </td>
+                            <td rowspan="3" align="center">
+                                <div class="vertical-buttons">
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
+                                </div>
+                            </td>
+
+                            <td rowspan="3" align="center">
+                                <button id="buttonmateri"
+                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
+                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                <br>
+                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
+                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3" align="center">5</td>
+                            <td align="center">
+                                <div>
+                                    <p>Senin, 26 Februari 2024</p>
+                                    <p>Jam</p>
+                                    <p>Ruang</p>
+                                </div>
+                            </td>
+                            <td rowspan="3" align="center">
+                                <div class="vertical-buttons">
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
+                                </div>
+                            </td>
+
+                            <td rowspan="3" align="center">
+                                <button id="buttonmateri"
+                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
+                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                <br>
+                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
+                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody>
+                        <tr>
+                            <td rowspan="3" align="center">6</td>
+                            <td align="center">
+                                <div>
+                                    <p>Senin, 26 Februari 2024</p>
+                                    <p>Jam</p>
+                                    <p>Ruang</p>
+                                </div>
+                            </td>
+                            <td rowspan="3" align="center">
+                                <div class="vertical-buttons">
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
+                                </div>
+                            </td>
+
+                            <td rowspan="3" align="center">
+                                <button id="buttonmateri"
+                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
+                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                <br>
+                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
+                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody>
+                        <tr>
+                            <td rowspan="3" align="center">7</td>
+                            <td align="center">
+                                <div>
+                                    <p>Senin, 26 Februari 2024</p>
+                                    <p>Jam</p>
+                                    <p>Ruang</p>
+                                </div>
+                            </td>
+                            <td rowspan="3" align="center">
+                                <div class="vertical-buttons">
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
+                                </div>
+                            </td>
+
+                            <td rowspan="3" align="center">
+                                <button id="buttonmateri"
+                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
+                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                <br>
+                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
+                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody>
+                        <tr>
+                            <td rowspan="3" align="center">8</td>
+                            <td align="center">
+                                <div>
+                                    <p>Senin, 26 Februari 2024</p>
+                                    <p>Jam</p>
+                                    <p>Ruang</p>
+                                </div>
+                            </td>
+                            <td rowspan="3" align="center">
+                                <div class="vertical-buttons">
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
+                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
+                                </div>
+                            </td>
+
+                            <td rowspan="3" align="center">
+                                <button id="buttonmateri"
+                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
+                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                <br>
+                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
+                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+
+
+
+
+
+
                 </table>
             </div>
         </div>

@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use App\Models\Kelas;
 
 class MatkulController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function index() {
-        return view('matkul');
+    public function index($id) {
+        $data = Kelas::findOrFail( $id );
+        return view('matkul', compact('data'));
     }
 }

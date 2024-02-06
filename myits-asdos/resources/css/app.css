@@ -24,9 +24,18 @@ a {
 
 /* End of Bootstrap Custom */
 
+body {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+
 /*button */
 .btn-primary {
-    background-color: #96E9C6 !important;
+    background-color: #343bbf !important;
  }
 
  .btn.hisa-button {
@@ -37,10 +46,11 @@ a {
     text-align: center; /* Pusatkan teks secara horizontal */
     align-items: center; /* Pusatkan secara vertikal */
 }
+
 /* Style Registrasi */
 .registrasi-container{
     background-color:#013880 !important;
-    min-height: 100vh;
+    min-height: auto;
 }
 
 
@@ -210,7 +220,6 @@ li {
 
 
 .table{
-    background-color: #013880;
     color: #FFFFFF;
 }
 /*end style matkul*/
