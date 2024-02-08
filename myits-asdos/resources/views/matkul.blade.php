@@ -8,7 +8,7 @@
                 <p style="font-size: 20px">{{ $data->nama_dosen }}</p>
             </article>
         </section>
-        <style>
+        {{-- <style>
             .button {
                 display: flex;
                 flex-direction: column;
@@ -36,28 +36,28 @@
                 align-items: center;
                 /* Pusatkan secara vertikal */
             }
-        </style>
+        </style> --}}
 
         <div class="container mb-3">
             <div class="card mx-4">
-                <div class="card-body d-flex flex-wrap justify-content-between">
-                    <div class="d-flex flex-column align-items-center">
+                <div class="card-body d-flex flex-wrap justify-content-between justify-content-lg-around ">
+                    <div class="d-flex flex-column align-items-center mx-2">
                         <h6 class="fs-6" style="color: #2FC2A5">Hadir</h6>
                         <p>0</p>
                     </div>
-                    <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex flex-column align-items-center mx-2">
                         <h6 class="fs-6" style="color: #356099">Izin</h6>
                         <p>0</p>
                     </div>
-                    <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex flex-column align-items-center mx-2">
                         <h6 class="fs-6" style="color: #FFCD35">Sakit</h6>
                         <p>0</p>
                     </div>
-                    <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex flex-column align-items-center mx-2">
                         <h6 class="fs-6" style="color: #E74E3E">Alpa</h6>
                         <p>8</p>
                     </div>
-                    <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex flex-column align-items-center mx-2">
                         <h6 class="fs-6">Total Tatap Muka</h6>
                         <p>8</p>
                     </div>
@@ -67,6 +67,7 @@
 
         <div class="container">
             <div class="card card-body card-matkul">
+                <div class="table-responsive">
                 <table class="table" border="0" width="100%" style="border-collapse: collapse ">
                     <thead>
                         <tr>
@@ -320,14 +321,8 @@
                             </td>
                         </tr>
                     </tbody>
-
-
-
-
-
-
-
                 </table>
+            </div>
             </div>
         </div>
     </body>

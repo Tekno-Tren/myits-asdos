@@ -8,9 +8,9 @@ use Illuminate\Routing\Controller as BaseController;
 
 class RegisController extends BaseController
 {
-    use AuthorizesRequests, ValidatesRequests;
+     use AuthorizesRequests, ValidatesRequests;
 
-    public function index() {
+     public function index() {
         return view('regis');
-    }
-}
+     }
+ }

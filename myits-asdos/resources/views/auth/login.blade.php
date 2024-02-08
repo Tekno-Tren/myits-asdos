@@ -41,7 +41,7 @@
                     @endif
                 </div>
             </form>
-            {{-- <a href="{{route('register')}}">Register</a> --}}
+            <!-- <a href="{{route('register')}}">Register</a> -->
         </div>
     </div>
 </div>

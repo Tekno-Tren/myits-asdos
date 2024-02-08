@@ -1,5 +1,7 @@
 
 *{
+    margin: 0;
+    padding: 0;
     font-family:'Open Sans' sans-serif;
 
 }
@@ -11,6 +13,8 @@ body{
 a {
     text-decoration: none;
 }
+
+
 /* custom css */
 
 
@@ -24,13 +28,39 @@ a {
 
 /* End of Bootstrap Custom */
 
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+@media screen and (max-width: 922px) {
+    .matkul {
+        width: 100%;
+    }
+}
+
+
+/*button */
+.btn-primary {
+    background-color: #343bbf !important;
+ }
+
+ .btn.hisa-button {
+    background-color: #bacfe6;
+    width: 35px; /* Sesuaikan lebar dengan tinggi untuk membuatnya menjadi lingkaran */
+    height: 35px; /* Sesuaikan tinggi dengan lebar untuk membuatnya menjadi lingkaran */
+    border-radius: 50%; /* Membuat sudut menjadi bundar untuk membuatnya menjadi lingkaran */
+    text-align: center; /* Pusatkan teks secara horizontal */
+    align-items: center; /* Pusatkan secara vertikal */
+}
 
 /* Style Registrasi */
 .registrasi-container{
     background-color:#013880 !important;
-    min-height: 100vh;
+    min-height: auto;
 }
-
 
 .form-container{
     padding:20px 25px;
@@ -46,7 +76,6 @@ a {
     text-transform:uppercase;
 }
 
-
 .form-container label{
     text-align:center;
     color:#E8F0FE;
@@ -58,6 +87,7 @@ a {
     border:none;
     background-color:#E8F0FE;
 }
+
 .form-container form input{
     padding:6px 5px;
     margin-bottom:15px;
@@ -96,7 +126,7 @@ a {
 /* End of style registrasi */
 
 /* Style Dashboard */
-article{
+.custom-dashboard-container{
     padding: 20px;
     background-color: #FFFFFF;
     height: 120px;
@@ -141,7 +171,7 @@ header {
     margin-left: 10px;
 }
 
-article {
+.custom-matkul{
     padding: 10px;
     background-color: white;
     margin-right: 10px;
@@ -157,8 +187,52 @@ footer {
     margin-left: 60px;
 }
 
-nav {
-    background-color: white;
+/* coba navbar */
+nav{
+    display: flex;
+    background-color: #bacfe6;
+    justify-content: space-around;
+    /* padding: 20px 0; */
+    height: 80px;
+    align-items: center;
+}
+
+nav .logo{
+    letter-spacing: 3px;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    width: 40%;
+    justify-content: right;
+}
+
+nav ul li a{
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+/* responsive breakpoint */
+
+/* ukuran tablet */
+@media screen and (max-width: 768px){
+    nav ul{
+        width: 50%;
+    }
+}
+
+/* ukuran mobile */
+@media screen and (max-width: 576px){
+    nav ul{
+        width: 50%;
+    }
+}
+
+/* end coba navbar */
+
+/* nav {
+    background-color: #bacfe6;
     padding: 30px;
     margin-top: 10px;
     margin-right: 60px;
@@ -182,7 +256,7 @@ nav li a {
 
 nav li a:hover {
     background-color: white;
-}
+} */
 
 ul {
     list-style-type: none;
@@ -195,17 +269,9 @@ li {
     float: left;
 }
 
-.hisa-button {
-    width: 30px;
-        height: 30px;
-        background-color: #bacfe6;
-        border-radius: 50%; /* Membuat tombol berbentuk bulat */
-        cursor: pointer;
-        margin-right: 10px; /* Jarak antara tombol */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-}
 
+
+.table{
+    color: #FFFFFF;
+}
 /*end style matkul*/
