@@ -7,7 +7,6 @@ use App\Http\Controllers\MatkulController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\BuktiController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\RegisController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -45,7 +44,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/bukti', [BuktiController::class, 'index'])->name('bukti.index');
 
-    Route::get('/regis', [RegisController::class, 'index'])->name('regis.index');
 
 
     // Profile

@@ -1,73 +1,39 @@
 @extends('layouts.app')
 @section('content')
-
-    <body style="background-color: #bacfe6">
-        <section>
-            <article class="custom-matkul mx-5" style="background-color :#bacfe6">
-                <h1 style="font-size: 20px">{{ $data->nama }}</h1>
-                <p style="font-size: 20px">{{ $data->nama_dosen }}</p>
-            </article>
-        </section>
-        {{-- <style>
-            .button {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .button h6 {
-                margin-bottom: 10px;
-            }
-
-            .button-row {
-                display: flex;
-            }
-
-            .btn.hisa-button {
-                background-color: #bacfe6;
-                width: 35px;
-                /* Sesuaikan lebar dengan tinggi untuk membuatnya menjadi lingkaran */
-                height: 35px;
-                /* Sesuaikan tinggi dengan lebar untuk membuatnya menjadi lingkaran */
-                border-radius: 50%;
-                /* Membuat sudut menjadi bundar untuk membuatnya menjadi lingkaran */
-                text-align: center;
-                /* Pusatkan teks secara horizontal */
-                align-items: center;
-                /* Pusatkan secara vertikal */
-            }
-        </style> --}}
-
-        <div class="container mb-3">
-            <div class="card mx-4">
-                <div class="card-body d-flex flex-wrap justify-content-between justify-content-lg-around ">
-                    <div class="d-flex flex-column align-items-center mx-2">
-                        <h6 class="fs-6" style="color: #2FC2A5">Hadir</h6>
-                        <p>0</p>
-                    </div>
-                    <div class="d-flex flex-column align-items-center mx-2">
-                        <h6 class="fs-6" style="color: #356099">Izin</h6>
-                        <p>0</p>
-                    </div>
-                    <div class="d-flex flex-column align-items-center mx-2">
-                        <h6 class="fs-6" style="color: #FFCD35">Sakit</h6>
-                        <p>0</p>
-                    </div>
-                    <div class="d-flex flex-column align-items-center mx-2">
-                        <h6 class="fs-6" style="color: #E74E3E">Alpa</h6>
-                        <p>8</p>
-                    </div>
-                    <div class="d-flex flex-column align-items-center mx-2">
-                        <h6 class="fs-6">Total Tatap Muka</h6>
-                        <p>8</p>
-                    </div>
+    <div class="mb-2 border-rad-0 mx-3 my-3">
+        <h5>{{ $data->nama }}</h5>
+        <h3> {{ $data->nama_dosen }}</h3>
+    </div>
+    <div class="container mb-3">
+        <div class="card ">
+            <div class="card-body d-flex flex-wrap justify-content-between justify-content-lg-around ">
+                <div class="d-flex flex-column align-items-center mx-2">
+                    <h6 class="fs-6 fw-semibold" style="color: #2FC2A5">Hadir</h6>
+                    <p>0</p>
+                </div>
+                <div class="d-flex flex-column align-items-center mx-2">
+                    <h6 class="fs-6 fw-semibold" style="color: #356099">Izin</h6>
+                    <p>0</p>
+                </div>
+                <div class="d-flex flex-column align-items-center mx-2">
+                    <h6 class="fs-6 fw-semibold" style="color: #FFCD35">Sakit</h6>
+                    <p>0</p>
+                </div>
+                <div class="d-flex flex-column align-items-center mx-2">
+                    <h6 class="fs-6 fw-semibold" style="color: #E74E3E">Alpa</h6>
+                    <p>8</p>
+                </div>
+                <div class="d-flex flex-column align-items-center mx-2">
+                    <h6 class="fs-6 fw-semibold">Total Tatap Muka</h6>
+                    <p>8</p>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <div class="card card-body card-matkul">
-                <div class="table-responsive">
+    <div class="container">
+        <div class="card card-body card-matkul">
+            <div class="table-responsive">
                 <table class="table" border="0" width="100%" style="border-collapse: collapse ">
                     <thead>
                         <tr>
@@ -97,13 +63,15 @@
                             </td>
 
                             <td rowspan="3" align="center">
-                                <button id="buttonmateri"
-                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                                    <a href="{{ route('materi.index') }}">Materi</a></button>
-                                <br>
-                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
-                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
-                                </button>
+                                <div class="d-flex">
+                                    <button id="buttonmateri"
+                                        style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
+                                        <a href="{{ route('materi.index') }}">Materi</a>
+                                    </button>
+                                    <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
+                                        <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -128,13 +96,15 @@
                             </td>
 
                             <td rowspan="3" align="center">
-                                <button id="buttonmateri"
-                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                                    <a href="{{ route('materi.index') }}">Materi</a></button>
-                                <br>
-                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
-                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
-                                </button>
+                                <div class="d-flex justify-content-center h-100">
+                                    <a id="buttonmateri" class="btn btn-primary mx-1"
+                                        href="{{ route('materi.index') }}">
+                                        Materi
+                                    </a>
+                                    <a id="buttonbukti" class="btn btn-primary mx-1" href="{{ route('bukti.index') }}">Foto
+                                        Kehadiran
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -323,9 +293,8 @@
                     </tbody>
                 </table>
             </div>
-            </div>
         </div>
-    </body>
+    </div>
 @endsection
 
 @section('scripts')

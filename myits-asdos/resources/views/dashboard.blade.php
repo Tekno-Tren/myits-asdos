@@ -3,15 +3,13 @@
 @section('content')
 <body style="background-color: #bacfe6">
     <!-- Nama Asdos-->
-    <div class="">
-        <div class="mb-2 border-rad-0 mx-5 px-0">
+        <div class="mb-2 border-rad-0 mx-3 my-3">
             <h5>Hallo,</h5>
             <h3> {{ Auth::user()->nama }} </h3>
         </div>
-    </div>
 
     <!-- Daftar Matkul -->
-    <div class="container mt-4">
+    <div class="container my-3">
         <div class="card">
             <div class="card-body">
                 <p style="font-weight: bold;">Daftar Mata Kuliah</p>

@@ -28,7 +28,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'nama' => ['required', 'string', 'max:255'],
@@ -42,24 +42,33 @@ class RegisteredUserController extends Controller
             'password' => ['required'],
         ]);
 
-        $user = User::create([
-            'nama' => $request->nama,
-            'username' => $request->username,
-            'departemen' => $request->departemen,
-            'telp' => $request->telp,
-            'bank' => $request->bank,
-            'norek' => $request->norek,
-            'nik' => $request->nik,
-            'alamat' => $request->alamat,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
 
+            $is_user = User::where('username', $request->username)->first();
+            if ($is_user) {
+                return redirect()->back()->with('error', 'Username sudah terdaftar');
+            }
 
+            $user = User::create([
+                'nama' => $request->nama,
+                'username' => $request->username,
+                'departemen' => $request->departemen,
+                'telp' => $request->telp,
+                'bank' => $request->bank,
+                'norek' => $request->norek,
+                'nik' => $request->nik,
+                'alamat' => $request->alamat,
+                'password' => Hash::make($request->password),
+            ]);
 
-        event(new Registered($user));
+            event(new Registered($user));
 
-        Auth::login($user);
+            return redirect()
+            ->route('login')
+            ->with('success', 'Berhasil mendaftar');
 
-        return redirect(RouteServiceProvider::HOME);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Username atau NIK sudah terdaftar');
+        }
     }
 }

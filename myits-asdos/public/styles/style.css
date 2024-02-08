@@ -1,17 +1,19 @@
+/* montserrat font include */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 *{
     margin: 0;
     padding: 0;
-    font-family:'Open Sans' sans-serif;
+    font-family: 'Montserrat', sans-serif;
 
 }
 
 body{
-    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 
@@ -69,13 +71,6 @@ body {
     background-color:#809CC0;
 }
 
-.form-container h1{
-    text-align:center;
-    color:black;
-    margin-bottom:10px;
-    text-transform:uppercase;
-}
-
 .form-container label{
     text-align:center;
     color:#E8F0FE;
@@ -117,6 +112,16 @@ body {
     display: none;
 }
 
+.logo-caption {
+    font-size: 1.8rem !important;
+}
+
+@media screen and (max-width: 768px) {
+    .logo-caption {
+        font-size: 1.1rem !important;
+    }
+}
+
 @media print {
     .logout, .tambah, .form-cari, .aksi {
         display: none;
@@ -152,11 +157,6 @@ section article li{
     margin-bottom:10px;
 }
 
-nav{
-    background-color: #FFFFFF;
-    padding: 20px;
-    font-weight: bold ;
-}
 /* Style end Dashboard */
 
 /*matkul*/
@@ -185,32 +185,6 @@ footer {
     margin-top: 10px;
     margin-right: 60px;
     margin-left: 60px;
-}
-
-/* coba navbar */
-nav{
-    display: flex;
-    background-color: #bacfe6;
-    justify-content: space-around;
-    /* padding: 20px 0; */
-    height: 80px;
-    align-items: center;
-}
-
-nav .logo{
-    letter-spacing: 3px;
-}
-
-nav ul{
-    display: flex;
-    list-style: none;
-    width: 40%;
-    justify-content: right;
-}
-
-nav ul li a{
-    text-decoration: none;
-    font-size: 0.8em;
 }
 
 /* responsive breakpoint */
