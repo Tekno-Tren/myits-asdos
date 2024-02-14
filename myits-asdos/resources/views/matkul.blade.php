@@ -63,15 +63,14 @@
                             </td>
 
                             <td rowspan="3" align="center">
-                                <div class="d-flex">
-                                    <button id="buttonmateri"
-                                        style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                                        <a href="{{ route('materi.index') }}">Materi</a>
-                                    </button>
-                                    <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
-                                        <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
-                                    </button>
-                                </div>
+                                <!-- <button id="buttonmateri" -->
+                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
+                                <!-- </button> -->
+                                <br>
+                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
+                                <!-- </button> -->
                             </td>
                         </tr>
                     </tbody>
@@ -96,15 +95,14 @@
                             </td>
 
                             <td rowspan="3" align="center">
-                                <div class="d-flex justify-content-center h-100">
-                                    <a id="buttonmateri" class="btn btn-primary mx-1"
-                                        href="{{ route('materi.index') }}">
-                                        Materi
-                                    </a>
-                                    <a id="buttonbukti" class="btn btn-primary mx-1" href="{{ route('bukti.index') }}">Foto
-                                        Kehadiran
-                                    </a>
-                                </div>
+                                 <!-- <button id="buttonmateri" -->
+                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
+                                <!-- </button> -->
+                                <br>
+                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
+                                <!-- </button> -->
                             </td>
                         </tr>
                     </tbody>
@@ -128,13 +126,14 @@
                             </td>
 
                             <td rowspan="3" align="center">
-                                <button id="buttonmateri"
-                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                 <!-- <button id="buttonmateri" -->
+                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
+                                <!-- </button> -->
                                 <br>
-                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
-                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
-                                </button>
+                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
+                                <!-- </button> -->
                             </td>
                         </tr>
                     </tbody>
@@ -158,13 +157,14 @@
                             </td>
 
                             <td rowspan="3" align="center">
-                                <button id="buttonmateri"
-                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                 <!-- <button id="buttonmateri" -->
+                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
+                                <!-- </button> -->
                                 <br>
-                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
-                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
-                                </button>
+                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
+                                <!-- </button> -->
                             </td>
                         </tr>
                     </tbody>
@@ -188,13 +188,14 @@
                             </td>
 
                             <td rowspan="3" align="center">
-                                <button id="buttonmateri"
-                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                 <!-- <button id="buttonmateri" -->
+                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
+                                <!-- </button> -->
                                 <br>
-                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
-                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
-                                </button>
+                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
+                                <!-- </button> -->
                             </td>
                         </tr>
                     </tbody>
@@ -219,13 +220,14 @@
                             </td>
 
                             <td rowspan="3" align="center">
-                                <button id="buttonmateri"
-                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                <!-- <button id="buttonmateri" -->
+                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
+                                <!-- </button> -->
                                 <br>
-                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
-                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
-                                </button>
+                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
+                                <!-- </button> -->
                             </td>
                         </tr>
                     </tbody>
@@ -250,13 +252,14 @@
                             </td>
 
                             <td rowspan="3" align="center">
-                                <button id="buttonmateri"
-                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                 <!-- <button id="buttonmateri" -->
+                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
+                                <!-- </button> -->
                                 <br>
-                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
-                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
-                                </button>
+                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
+                                <!-- </button> -->
                             </td>
                         </tr>
                     </tbody>
@@ -281,13 +284,14 @@
                             </td>
 
                             <td rowspan="3" align="center">
-                                <button id="buttonmateri"
-                                    style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">
-                                    <a href="{{ route('materi.index') }}">Materi</a></button>
+                                 <!-- <button id="buttonmateri" -->
+                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
+                                <!-- </button> -->
                                 <br>
-                                <button id="buttonbukti" style="width: 125px; background-color: #bacfe6">
-                                    <a href="{{ route('bukti.index') }}">Foto Kehadiran</a>
-                                </button>
+                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
+                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
+                                <!-- </button> -->
                             </td>
                         </tr>
                     </tbody>

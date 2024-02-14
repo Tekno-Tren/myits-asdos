@@ -5,22 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kelas extends Model
+class Bukti extends Model
 {
     use HasFactory;
 
-    protected $table ='kelas';
+    protected $table ='buktifoto';
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
-        'nama',
-        'waktu',
-        'nama_dosen',
-        'user_id'
+        'filename',
+        'original_name',
+        'file_path',
+        'user_id',
+        'kelas_id'
     ];
 
     public function users()
     {
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+    public function kelas()
+    {
+        return $this->belongsTo('App\Models\Kelas', 'kelas_id', 'id');
     }
 }

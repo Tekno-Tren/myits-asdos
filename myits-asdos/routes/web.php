@@ -36,13 +36,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/pertemuan', [PertemuanController::class, 'index'])->name('pertemuan.index');
     // End of pertemuan
 
-    Route::get('/materi', [MateriController::class, 'index'])->name('materi.index');
+    Route::get('/materi/{id}', [MateriController::class, 'index'])->name('materi.index');
+    Route::post('/materi/{id}', [MateriController::class, 'store'])->name('materi.store');
 
     Route::get('/matkul/{id}', [MatkulController::class, 'index'])->name('matkul.index');
 
     Route::get('/section', [SectionController::class, 'index'])->name('section.index');
 
-    Route::get('/bukti', [BuktiController::class, 'index'])->name('bukti.index');
+    Route::get('/bukti/{id}', [BuktiController::class, 'index'])->name('bukti.index');
+    Route::post('/bukti/{id}', [BuktiController::class, 'store'])->name('bukti.store');
+
 
 
 
