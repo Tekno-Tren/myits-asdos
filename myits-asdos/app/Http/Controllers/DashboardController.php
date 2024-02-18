@@ -22,4 +22,6 @@ class DashboardController extends BaseController
         // Menampilkan view dashboard dan mengirim data kelas ke dalam view
         return view('dashboard', compact('kelas'));
     }
+
+
 }

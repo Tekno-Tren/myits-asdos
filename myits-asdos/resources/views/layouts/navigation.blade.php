@@ -1,6 +1,6 @@
-<nav class="d-flex justify-content-between">
+<nav class="d-flex justify-content-between mx-4">
     <div class="logo">
-        <h4 class=" logo-caption fw-semibold ">PRESENSI ASISTEN DOSEN</h4>
+        <h4 class="fs-4 logo-caption fw-semibold ">PRESENSI ASISTEN DOSEN</h4>
     </div>
 
     <form action="{{ route('logout') }}" method="POST">

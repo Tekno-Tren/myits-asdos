@@ -17,7 +17,8 @@ class Bukti extends Model
         'original_name',
         'file_path',
         'user_id',
-        'kelas_id'
+        'pertemuan_id',
+
     ];
 
     public function users()

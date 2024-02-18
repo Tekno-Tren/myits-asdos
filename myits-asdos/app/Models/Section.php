@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Materi extends Model
+class Section extends Model
 {
     use HasFactory;
 
-    protected $table ='materi';
+    protected $table ='section';
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
-        'materi',
+        'filename',
+        'original_name',
+        'file_path',
         'user_id',
         'kelas_id',
-        'pertemuan_id',
     ];
 
     public function users()
@@ -26,10 +27,5 @@ class Materi extends Model
     public function kelas()
     {
         return $this->belongsTo('App\Models\Kelas', 'kelas_id', 'id');
-    }
-
-    public function pertemuan()
-    {
-        return $this->belongsTo('App\Models\Pertemuan', 'pertemuan_id', 'id');
     }
 }

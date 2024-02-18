@@ -1,35 +1,53 @@
 @extends('layouts.app')
 @section('content')
-    <div class="mb-2 border-rad-0 mx-3 my-3">
-        <h5>{{ $data->nama }}</h5>
-        <h3> {{ $data->nama_dosen }}</h3>
+    @if (session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" kelas-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @elseif (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" kelas-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    <div class="d-flex justify-content-between  mb-2 border-rad-0 mx-4 my-3">
+        <div>
+            <h5>{{ $kelas->nama }}</h5>
+            <h3> {{ $kelas->nama_dosen }}</h3>
+        </div>
+        <div>
+            <a type="button" class="btn btn-outline-secondary mx-8" href="{{ route('pertemuan.index', 'matkul='. $kelas->id) }}">+ Pertemuan</a>
+        </div>
     </div>
     <div class="container mb-3">
         <div class="card ">
             <div class="card-body d-flex flex-wrap justify-content-between justify-content-lg-around ">
                 <div class="d-flex flex-column align-items-center mx-2">
                     <h6 class="fs-6 fw-semibold" style="color: #2FC2A5">Hadir</h6>
-                    <p>0</p>
+                    <p id="countHadir">0</p>
                 </div>
                 <div class="d-flex flex-column align-items-center mx-2">
                     <h6 class="fs-6 fw-semibold" style="color: #356099">Izin</h6>
-                    <p>0</p>
+                    <p id="countIzin">0</p>
                 </div>
                 <div class="d-flex flex-column align-items-center mx-2">
                     <h6 class="fs-6 fw-semibold" style="color: #FFCD35">Sakit</h6>
-                    <p>0</p>
+                    <p id="countSakit">0</p>
                 </div>
                 <div class="d-flex flex-column align-items-center mx-2">
                     <h6 class="fs-6 fw-semibold" style="color: #E74E3E">Alpa</h6>
-                    <p>8</p>
+                    <p id="countAlpa">8</p>
                 </div>
                 <div class="d-flex flex-column align-items-center mx-2">
                     <h6 class="fs-6 fw-semibold">Total Tatap Muka</h6>
-                    <p>8</p>
+                    <p id="countTotal">8</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="alert_message" style="max-height: 150px; overflow-y:auto;"></div>
 
     <div class="container">
         <div class="card card-body card-matkul">
@@ -44,256 +62,54 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($pertemuan as $key => $p)
                         <tr>
-                            <td rowspan="3" align="center">1</td>
+                            <td align="center">
+                                {{ $key + 1 }}
+                            </td>
                             <td align="center">
                                 <div>
-                                    <p>Senin, 26 Februari 2024</p>
-                                    <p>Jam</p>
-                                    <p>Ruang</p>
+                                    <p>{{ $p->tanggal }}</p>
+                                    <p>{{ $p->jam }}</p>
+                                    <p>{{ $p->tempat }}</p>
                                 </div>
                             </td>
-                            <td rowspan="3" align="center">
-                                <div class="vertical-buttons">
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
-                                </div>
-                            </td>
-
-                            <td rowspan="3" align="center">
-                                <!-- <button id="buttonmateri" -->
-                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
-                                <!-- </button> -->
-                                <br>
-                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
-                                <!-- </button> -->
-                            </td>
-                        </tr>
-                    </tbody>
-
-                    <tbody>
-                        <tr>
-                            <td rowspan="3" align="center">2</td>
                             <td align="center">
-                                <div>
-                                    <p>Senin, 26 Februari 2024</p>
-                                    <p>Jam</p>
-                                    <p>Ruang</p>
-                                </div>
-                            </td>
-                            <td rowspan="3" align="center">
-                                <div class="vertical-buttons">
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
-                                </div>
-                            </td>
+                                <div class="vertical-buttons switch-field justify-content-center">
+                                    <input type="radio" id="{{ 'hadir_' . $p->id }}" class="btn_hadir" name="p_{{ $p->id }}" value="1" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 1 ? 'checked' : '' }} />
+                                    <label for="{{ 'hadir_' . $p->id }}">H</label>
 
-                            <td rowspan="3" align="center">
-                                 <!-- <button id="buttonmateri" -->
-                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
-                                <!-- </button> -->
-                                <br>
-                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
-                                <!-- </button> -->
+                                    <input type="radio" id="{{ 'izin_' . $p->id }}" class="btn_izin" name="p_{{ $p->id }}" value="2" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 2 ? 'checked' : '' }} />
+                                    <label for="{{ 'izin_' . $p->id }}">I</label>
+
+                                    <input type="radio" id="{{ 'sakit_' . $p->id }}" class="btn_sakit" name="p_{{ $p->id }}" value="3" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 3 ? 'checked' : '' }} />
+                                    <label for="{{ 'sakit_' . $p->id }}">S</label>
+
+                                    <input type="radio" id="{{ 'alpa_' . $p->id }}" class="btn_sakit" name="p_{{ $p->id }}" value="0" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 0 ? 'checked' : '' }} />
+                                    <label for="{{ 'alpa_' . $p->id }}">A</label>
+                                </div>
                             </td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td rowspan="3" align="center">3</td>
                             <td align="center">
-                                <div>
-                                    <p>Senin, 26 Februari 2024</p>
-                                    <p>Jam</p>
-                                    <p>Ruang</p>
-                                </div>
-                            </td>
-                            <td rowspan="3" align="center">
-                                <div class="vertical-buttons">
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
-                                </div>
-                            </td>
+                                <form action="{{ route('materi.index', $p->id) }}" method="get">
+                                    @csrf
+                                    @method('GET')
+                                    <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
+                                        id="">
+                                    <input type="hidden" name="kelas_id" value="{{ $kelas->id }}" id="">
+                                    <button type="submit" class="btn btn-outline-secondary mx-8">Berita Acara</button>
+                                </form>
 
-                            <td rowspan="3" align="center">
-                                 <!-- <button id="buttonmateri" -->
-                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
-                                <!-- </button> -->
-                                <br>
-                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
-                                <!-- </button> -->
+                                <form action="{{ route('bukti.index', $p->id) }}" method="get">
+                                    @csrf
+                                    @method('GET')
+                                    <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
+                                        id="">
+                                    <input type="hidden" name="kelas_id" value="{{ $kelas->id }}" id="">
+                                    <button type="submit" class="btn btn-outline-secondary mx-8">Bukti Kehadiran</button>
+                                </form>
                             </td>
                         </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td rowspan="3" align="center">4</td>
-                            <td align="center">
-                                <div>
-                                    <p>Senin, 26 Februari 2024</p>
-                                    <p>Jam</p>
-                                    <p>Ruang</p>
-                                </div>
-                            </td>
-                            <td rowspan="3" align="center">
-                                <div class="vertical-buttons">
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
-                                </div>
-                            </td>
-
-                            <td rowspan="3" align="center">
-                                 <!-- <button id="buttonmateri" -->
-                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
-                                <!-- </button> -->
-                                <br>
-                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
-                                <!-- </button> -->
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td rowspan="3" align="center">5</td>
-                            <td align="center">
-                                <div>
-                                    <p>Senin, 26 Februari 2024</p>
-                                    <p>Jam</p>
-                                    <p>Ruang</p>
-                                </div>
-                            </td>
-                            <td rowspan="3" align="center">
-                                <div class="vertical-buttons">
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
-                                </div>
-                            </td>
-
-                            <td rowspan="3" align="center">
-                                 <!-- <button id="buttonmateri" -->
-                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
-                                <!-- </button> -->
-                                <br>
-                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
-                                <!-- </button> -->
-                            </td>
-                        </tr>
-                    </tbody>
-
-                    <tbody>
-                        <tr>
-                            <td rowspan="3" align="center">6</td>
-                            <td align="center">
-                                <div>
-                                    <p>Senin, 26 Februari 2024</p>
-                                    <p>Jam</p>
-                                    <p>Ruang</p>
-                                </div>
-                            </td>
-                            <td rowspan="3" align="center">
-                                <div class="vertical-buttons">
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
-                                </div>
-                            </td>
-
-                            <td rowspan="3" align="center">
-                                <!-- <button id="buttonmateri" -->
-                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
-                                <!-- </button> -->
-                                <br>
-                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
-                                <!-- </button> -->
-                            </td>
-                        </tr>
-                    </tbody>
-
-                    <tbody>
-                        <tr>
-                            <td rowspan="3" align="center">7</td>
-                            <td align="center">
-                                <div>
-                                    <p>Senin, 26 Februari 2024</p>
-                                    <p>Jam</p>
-                                    <p>Ruang</p>
-                                </div>
-                            </td>
-                            <td rowspan="3" align="center">
-                                <div class="vertical-buttons">
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
-                                </div>
-                            </td>
-
-                            <td rowspan="3" align="center">
-                                 <!-- <button id="buttonmateri" -->
-                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
-                                <!-- </button> -->
-                                <br>
-                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
-                                <!-- </button> -->
-                            </td>
-                        </tr>
-                    </tbody>
-
-                    <tbody>
-                        <tr>
-                            <td rowspan="3" align="center">8</td>
-                            <td align="center">
-                                <div>
-                                    <p>Senin, 26 Februari 2024</p>
-                                    <p>Jam</p>
-                                    <p>Ruang</p>
-                                </div>
-                            </td>
-                            <td rowspan="3" align="center">
-                                <div class="vertical-buttons">
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">H</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">I</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">S</button>
-                                    <button class="btn hisa-button" onclick="changeColor(this, 1)">A</button>
-                                </div>
-                            </td>
-
-                            <td rowspan="3" align="center">
-                                 <!-- <button id="buttonmateri" -->
-                                    <!-- style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('materi.index', $data->id) }}">Materi</a>
-                                <!-- </button> -->
-                                <br>
-                                <!-- <button id="buttonbukti" style="width: 125px; background-color: #bacfe6"> -->
-                                    <a href="{{ route('bukti.index', $data->id) }}">Foto Kehadiran</a>
-                                <!-- </button> -->
-                            </td>
-                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -302,29 +118,54 @@
 @endsection
 
 @section('scripts')
-    <script>
-        // Fungsi untuk merubah warna tombol dalam grup
-        function changeColor(button, group) {
-            // Mendapatkan elemen yang menjadi parent tombol
-            var parentElement = button.parentElement;
+<script>
+    $('.btn_hadir, .btn_izin, .btn_sakit, .btn_alpa').on('change', function() {
+        var id_pertemuan = $(this).data('pertemuan');
+        var status = $(this).val();
+        $.ajax({
+            url: "{{ route('update.kehadiran') }}",
+            // url: "https://6ef8-182-253-50-130.ngrok-free.app/update-kehadiran",
+            type: "POST",
+            data: {
+                id_pertemuan: id_pertemuan,
+                status: status,
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(data) {
+                var message = data.message;
 
-            // Mendapatkan koleksi tombol dalam grup
-            var buttonsInGroup = parentElement.querySelectorAll('.btn');
+                $('#alert_message').append(`
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    ${message}
 
-            // Toggle: mengembalikan warna semua tombol dalam grup ke warna asal jika tombol yang diklik sudah berwarna hijau
-            if (button.style.backgroundColor === 'green') {
-                buttonsInGroup.forEach(function(btn) {
-                    btn.style.backgroundColor = '';
-                });
-            } else {
-                // Mengembalikan warna semua tombol dalam grup ke warna asal
-                buttonsInGroup.forEach(function(btn) {
-                    btn.style.backgroundColor = '';
-                });
+                    <button type="button" class="btn-close" kelas-bs-dismiss="alert" aria-label="Close">
+                    </button>
 
-                // Mengubah warna latar belakang tombol yang diklik menjadi hijau
-                button.style.backgroundColor = 'green';
+                </div>
+                `), setTimeout(() => {
+                    $('#alert_message').empty();
+                }, 3000)
+                countHadir();
             }
-        }
-    </script>
+        });
+    });
+</script>
+
+<script>
+            countHadir();
+
+        function countHadir() {
+        let countHadir = $('input[type="radio"][id^="hadir_"]:checked').length;
+        let countIzin = $('input[type="radio"][id^="izin_"]:checked').length;
+        let countAlpa = $('input[type="radio"][id^="alpa_"]:checked').length;
+        let countSakit = $('input[type="radio"][id^="sakit_"]:checked').length;
+
+        $('#countHadir').text(countHadir);
+        $('#countIzin').text(countIzin);
+        $('#countSakit').text(countSakit);
+        $('#countAlpa').text(countAlpa);
+        $('#countTotal').text(countAlpa + countIzin + countHadir );
+
+    }
+</script>
 @endsection

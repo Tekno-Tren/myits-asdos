@@ -16,7 +16,9 @@ class Kelas extends Model
         'nama',
         'waktu',
         'nama_dosen',
-        'user_id'
+        'user_id',
+        'kelas_id',
+        'pertemuan_id',
     ];
 
     public function users()

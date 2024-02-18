@@ -15,33 +15,43 @@ class BuktiController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function index($kelas_id) {
-        $user_id = Auth::id();
-        // dd($kelas_id);
-        return view('bukti', compact('user_id', 'kelas_id'));
+    public function index(Request $request) {
+        $kelas_id = $request->query('kelas_id');
+        $pertemuan_id = $request->query('pertemuan_id');
+        $user_id = Auth::user()->id;
+        $bukti = Bukti::where('user_id', $user_id)
+            ->where('pertemuan_id', $pertemuan_id)
+            ->first();
+        return view('bukti', compact('user_id', 'kelas_id', 'pertemuan_id', 'bukti'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'bukti' => ['required', 'mimes:pdf,jpg,png', 'max:2048'],
+            'upload_berkas' => ['required', 'file', 'mimes:jpeg,png,jpg', 'max:2048'],
         ]);
 
-        $file = $request->file('bukti');
-        $fileName = $file->getClientOriginalName();
+        try{
+        $file = $request->file('upload_berkas');
+        $fileName = hash('sha256', time()).'.'.$file->getClientOriginalExtension();
         $filePath = $file->store('uploads', 'public');
 
         // Store file information in the database
-        $uploadedFile = new Bukti();
-        $uploadedFile->filename = $fileName;
-        $uploadedFile->original_name = $file->getClientOriginalName();
-        $uploadedFile->file_path = $filePath;
-        $uploadedFile->user_id = $request->user_id;
-        $uploadedFile->kelas_id = $request->kelas_id;
-        $uploadedFile->save();
+        $bukti = new Bukti;
+        $bukti->user_id = $request->user_id;
+        $bukti->filename = $fileName;
+        $bukti->file_path = $filePath;
+        $bukti->original_name = $file->getClientOriginalName();
+        $bukti->pertemuan_id = $request->pertemuan_id;
+        $bukti->save();
 
         return redirect()
             ->route('matkul.index', $request->kelas_id)
-            ->with('success', 'Berhasil mendaftar');
+            ->with('success', 'Berhasil upload bukti kehadiran');
+        } catch (\Exception $e) {
+            return redirect()
+            ->route('matkul.index', $request->kelas_id)
+            ->with('error', 'Gagal upload bukti kehadiran');
+        }
     }
 }
