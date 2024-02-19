@@ -13,6 +13,7 @@ class Section extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
+        'rekap_nilai',
         'filename',
         'original_name',
         'file_path',

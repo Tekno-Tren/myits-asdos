@@ -46,7 +46,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/matkul/{id}', [MatkulController::class, 'index'])->name('matkul.index');
 
-    Route::get('/section', [SectionController::class, 'index'])->name('section.index');
+    Route::get('/section1', [SectionController::class, 'index1'])->name('section1.index');
+    Route::get('/section2', [SectionController::class, 'index2'])->name('section2.index');
     Route::post('/section/create/{id}', [SectionController::class, 'store'])->name('section.store');
 
 

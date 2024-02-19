@@ -35,8 +35,9 @@
                         </div>
                         <div class="d-flex">
                             <input type="file" id="section" name="upload_berkas" class="form-control" value="section">
-                                <input type="hidden" id="user_id" class="form-control" name="user_id" value="{{ $user_id }}">
-                                <input type="hidden" id="kelas_id" class="form-control" name="kelas_id" value="{{ $kelas_id }}">
+                            <input type="hidden" id="user_id" class="form-control" name="user_id" value="{{ $user_id }}">
+                            <input type="hidden" id="kelas_id" class="form-control" name="kelas_id" value="{{ $kelas_id }}">
+                            <input type="hidden" id="rekap_nilai" class="form-control" name="rekap_nilai" value="2">
                             <button
                                 class="btn btn-primary mx-2" type="submit">
                                 Upload

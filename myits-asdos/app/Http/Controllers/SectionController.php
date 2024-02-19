@@ -16,11 +16,17 @@ class SectionController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function index() {
+    public function index1() {
         $user_id = Auth::id();
         $kelas_id = Kelas::where('user_id', $user_id)->first()->id;
-        $tugas_list = Section::where('user_id', $user_id)->where('kelas_id', $kelas_id)->get();
-        return view('section', compact('user_id', 'kelas_id', 'tugas_list'));
+        $tugas_list = Section::where('user_id', $user_id)->where('kelas_id', $kelas_id)->where('rekap_nilai', 1)->get();
+        return view('section1', compact('user_id', 'kelas_id', 'tugas_list'));
+    }
+    public function index2() {
+        $user_id = Auth::id();
+        $kelas_id = Kelas::where('user_id', $user_id)->first()->id;
+        $tugas_list = Section::where('user_id', $user_id)->where('kelas_id', $kelas_id)->where('rekap_nilai', 2)->get();
+        return view('section2', compact('user_id', 'kelas_id', 'tugas_list'));
     }
 
     public function store(Request $request)
@@ -28,6 +34,9 @@ class SectionController extends Controller
         try {
             $request->validate([
                 'upload_berkas' => ['required', 'mimes:pdf', 'max:2000'],
+                'user_id' => ['required'],
+                'kelas_id' => ['required'],
+                'rekap_nilai' => ['required']
             ]);
 
             $file = $request->file('upload_berkas');
@@ -50,6 +59,7 @@ class SectionController extends Controller
                 $uploadedFile->file_path = $filePath;
                 $uploadedFile->user_id = $request->user_id;
                 $uploadedFile->kelas_id = $request->kelas_id;
+                $uploadedFile->rekap_nilai = $request->rekap_nilai;
                 $uploadedFile->save();
 
                 return redirect()->back()->with('success', 'Berkas berhasil diupload');
