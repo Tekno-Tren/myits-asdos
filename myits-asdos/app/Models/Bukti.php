@@ -18,15 +18,14 @@ class Bukti extends Model
         'file_path',
         'user_id',
         'pertemuan_id',
-
     ];
 
     public function users()
     {
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
-    public function kelas()
+    public function pertemuan()
     {
-        return $this->belongsTo('App\Models\Kelas', 'kelas_id', 'id');
+        return $this->belongsTo('App\Models\Kelas', 'pertemuan_id', 'id');
     }
 }

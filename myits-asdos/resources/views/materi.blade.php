@@ -15,8 +15,7 @@
             </div>
         @endif
         <div class="w-100">
-            <div class="w-100 px-4 border border-slate-300 rounded-xl mx-auto p-5 shadow-md font-inter"
-                style="background-color: aliceblue">
+            <div class="card card-body w-100 mt-3" style="background-color: aliceblue">
                 <div class="mx-auto text-center mt-6 mb-4 ">
                     <h4 class="font-bold text-3xl text-dark mt-6">Berita Acara</h4>
                 </div>
@@ -30,13 +29,12 @@
                         <input type="hidden" id="kelas_id" name="kelas_id" value="{{ $kelas_id }}">
                         <input type="hidden" id="kelas_id" name="pertemuan_id" value="{{ $pertemuan_id }}">
                     </div>
-                    <br>
-                    <button class="btn btn-primary mx-4" type="submit ">
+                    <button class="btn btn-primary mx-4 mt-3" type="submit ">
                         Submit
                     </button>
                 </form>
             </div>
-            <div class="card card-body w-100 mt-3">
+            <div class="card card-body w-100 mt-3" style="background-color: aliceblue">
                 <h5>Berita Acara Sebelumnya</h5>
                 <p>{{ $materi == null ? 'Belum ada berita acara ' : $materi->materi }}</p>
             </div>

@@ -2,8 +2,8 @@
 
 @section('content')
     <!--Upload Nilai-->
-    <section id="formupload" class="d-flex pt-4 justify-content-center" style="background-color: #bacfe6; min-height:100vh;">
-        <div class="container mt-4">
+    <section id="formupload" class="d-flex pt-4 justify-content-center" style="min-height:100vh">
+        <div class="container mt-2">
         @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -19,8 +19,7 @@
             <div class="card" style="background-color: aliceblue;">
                 <div class="card-body">
                     <div class="mx-auto text-center mt-6 mb-4">
-                        <h2 class="">SECTION</h2>
-                        <h4 class="">Form Upload Nilai</h4>
+                        <h2 class="">Form Upload Nilai</h2>
                     </div>
                     <form action="{{ route('section.store', $kelas_id) }}" method="POST" enctype="multipart/form-data">
                         @csrf

@@ -2,7 +2,7 @@
 
 @section('content')
     <!--Upload Nilai-->
-    <section id="formupload" class="" min-height:100vh;">
+    <section id="formupload" class="min-height:100vh mt-5">
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}

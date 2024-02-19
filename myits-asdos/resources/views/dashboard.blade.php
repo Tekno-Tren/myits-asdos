@@ -21,12 +21,12 @@
         <!-- Section -->
         <div class="d-flex flex-column">
             <div class="card card-body mt-3">
-                <p style="font-weight: bold;">Section 1</p>
+                <p style="font-weight: bold;">Rekap Nilai 1</p>
                 <p style="font-size: 15px" class="tugas1"><a href="section">Tugas asdos
                         mengupload file berisi nilai mahasiswa sebelum ETS</a></p>
             </div>
             <div class="card card-body mt-3">
-                <p style="font-weight: bold;">Section 2</p>
+                <p style="font-weight: bold;">Rekap Nilai 2</p>
                 <p style="font-size: 15px" class="tugas2"><a href="section">Tugas asdos
                         mengupload file berisi nilai mahasiswa sesudah ETS</a></p>
             </div>

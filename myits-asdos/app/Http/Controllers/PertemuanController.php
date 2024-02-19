@@ -35,7 +35,9 @@ class PertemuanController extends BaseController
                 'tanggal' => $request->tanggal,
                 'jam' => $request->jam,
                 'tempat' => $request->tempat,
+                'status_kehadiran' => 0,
                 'kelas_id' => $request->kelas_id
+
             ]);
 
 

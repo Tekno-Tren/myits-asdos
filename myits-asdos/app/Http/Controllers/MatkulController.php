@@ -18,9 +18,11 @@ class MatkulController extends BaseController
         $kelas = Kelas::findOrFail( $id );
         $user = Auth::user();
         $pertemuan = Pertemuan::rightJoin('kelas', 'pertemuan.kelas_id', '=', 'kelas.id')
+            ->leftJoin('materi', 'pertemuan.id', '=', 'materi.pertemuan_id')
+            ->leftJoin('buktifoto', 'pertemuan.id', '=', 'buktifoto.pertemuan_id')
             ->where('kelas.id', $id)
             ->where('kelas.user_id', $user->id)
-            ->select('pertemuan.*')
+            ->select('pertemuan.*', 'materi.materi', 'buktifoto.filename')
             ->get();
 
         return view('matkul', compact('kelas', 'pertemuan'));

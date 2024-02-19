@@ -16,13 +16,23 @@ class Pertemuan extends Model
         'tanggal',
         'jam',
         'tempat',
-        'kelas_id',
-        'pertemuan_id'
+        'status_kehadiran',
+        'kelas_id'
     ];
 
 
     public function kelas()
     {
         return $this->belongsTo('App\Models\Kelas', 'kelas_id', 'id');
+    }
+
+    public function materi()
+    {
+        return $this->hasOne('App\Models\Materi', 'id', 'pertemuan_id');
+    }
+
+    public function bukti_kehadiran()
+    {
+        return $this->hasOne('App\Models\Bukti', 'id', 'pertemuan_id');
     }
 }

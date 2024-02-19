@@ -76,6 +76,7 @@
                             </td>
                             <td align="center">
                                 <div class="vertical-buttons switch-field justify-content-center">
+                                    @if ($p->materi && $p->filename)
                                     <input type="radio" id="{{ 'hadir_' . $p->id }}" class="btn_hadir" name="p_{{ $p->id }}" value="1" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 1 ? 'checked' : '' }} />
                                     <label for="{{ 'hadir_' . $p->id }}">H</label>
 
@@ -85,8 +86,21 @@
                                     <input type="radio" id="{{ 'sakit_' . $p->id }}" class="btn_sakit" name="p_{{ $p->id }}" value="3" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 3 ? 'checked' : '' }} />
                                     <label for="{{ 'sakit_' . $p->id }}">S</label>
 
-                                    <input type="radio" id="{{ 'alpa_' . $p->id }}" class="btn_sakit" name="p_{{ $p->id }}" value="0" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 0 ? 'checked' : '' }} />
+                                    <input type="radio" id="{{ 'alpa_' . $p->id }}" class="btn_alpa" name="p_{{ $p->id }}" value="0" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 0 ? 'checked' : '' }} />
                                     <label for="{{ 'alpa_' . $p->id }}">A</label>
+                                    @else
+                                    <input type="radio" id="{{ 'hadir_' . $p->id }}" class="btn_hadir" name="p_{{ $p->id }}" value="1" data-pertemuan="{{ $p->id }}" disabled />
+                                    <label for="{{ 'hadir_' . $p->id }}">H</label>
+
+                                    <input type="radio" id="{{ 'izin_' . $p->id }}" class="btn_izin" name="p_{{ $p->id }}" value="2" data-pertemuan="{{ $p->id }}" disabled />
+                                    <label for="{{ 'izin_' . $p->id }}">I</label>
+
+                                    <input type="radio" id="{{ 'sakit_' . $p->id }}" class="btn_sakit" name="p_{{ $p->id }}" value="3" data-pertemuan="{{ $p->id }}" disabled />
+                                    <label for="{{ 'sakit_' . $p->id }}">S</label>
+
+                                    <input type="radio" id="{{ 'alpa_' . $p->id }}" class="btn_alpa" name="p_{{ $p->id }}" value="0" data-pertemuan="{{ $p->id }}" disabled />
+                                    <label for="{{ 'alpa_' . $p->id }}">A</label>
+                                    @endif
                                 </div>
                             </td>
                             <td align="center">
@@ -96,7 +110,7 @@
                                     <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
                                         id="">
                                     <input type="hidden" name="kelas_id" value="{{ $kelas->id }}" id="">
-                                    <button type="submit" class="btn btn-outline-secondary mx-8">Berita Acara</button>
+                                    <button type="submit" class="btn btn-outline-secondary mx-8 mt-3">Berita Acara</button>
                                 </form>
 
                                 <form action="{{ route('bukti.index', $p->id) }}" method="get">
@@ -105,7 +119,7 @@
                                     <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
                                         id="">
                                     <input type="hidden" name="kelas_id" value="{{ $kelas->id }}" id="">
-                                    <button type="submit" class="btn btn-outline-secondary mx-8">Bukti Kehadiran</button>
+                                    <button type="submit" class="btn btn-outline-secondary mx-8 mt-2">Bukti Kehadiran</button>
                                 </form>
                             </td>
                         </tr>
