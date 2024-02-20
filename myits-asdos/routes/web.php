@@ -8,6 +8,13 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\BuktiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\JadwalController;
+use App\Http\Controllers\Admin\DataAsdosController;
+use App\Http\Controllers\Admin\MateriAdminController;
+use App\Http\Controllers\Admin\BuktiAdminController;
+use App\Http\Controllers\Admin\RekapNilaiController;
+use App\Http\Controllers\Admin\AbsensiController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +33,27 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/admin', function () {
+    return view('admin.login');
+});
+
 // Pertemuan
 // End of pertemuan
+
+// admin
+
+Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
+
+Route::get('/admin/dataasdos', [DataAsdosController::class, 'index'])->name('admin.dataasdos');
+Route::get('/admin/materi', [MateriAdminController::class, 'index'])->name('admin.materi');
+Route::get('/admin/rekapnilai', [RekapNilaiController::class, 'index'])->name('admin.rekapnilai');
+Route::get('/admin/bukti', [BuktiAdminController::class, 'index'])->name('admin.bukti');
+Route::get('/admin/jadwal', [JadwalController::class, 'index'])->name('admin.jadwal');
+Route::post('/admin/jadwal/create/{id}', [JadwalController::class, 'store'])->name('jadwal.store');
+Route::get('/admin/absensi', [AbsensiController::class, 'index'])->name('admin.absensi');
+
+
+// end admin
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 

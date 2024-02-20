@@ -1,6 +1,6 @@
 <x-guest-layout>
 
-<div class="container d-flex flex-column align-items-center my-auto justify-content-center" style="height: 100vh;">
+<div class="container mt-4 d-flex flex-column align-items-center my-auto justify-content-center" style="height: 100vh;">
     @if(session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ session('success') }}

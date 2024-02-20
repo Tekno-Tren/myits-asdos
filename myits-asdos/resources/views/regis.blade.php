@@ -27,7 +27,6 @@ if (isset($_POST["register"])) {
 <?php require ($dir . '/base/head.php') ?>
 </head>
 <body style="background-color: #bacfe6" >
-    <div class="container pt-10 pb-16">
 	<div class="registrasi-container d-flex flex-column align-items-center px-3 pt-5 pb-5 ">
 	<div class="form-container ">
 	<h1>Halaman Registrasi</h1>

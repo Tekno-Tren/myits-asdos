@@ -30,12 +30,12 @@ a {
 
 /* End of Bootstrap Custom */
 
-body {
+/* body {
     display: flex;
     align-items: center;
     justify-content: center;
     height: auto;
-}
+} */
 
 @media screen and (max-width: 922px) {
     .matkul {
