@@ -13,7 +13,7 @@
 
                 {{-- Nanti buat alert manual --}}
                 {{-- <x-auth-session-status class="mb-4" :status="session('status')" /> --}}
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login-admin') }}">
                     @csrf
                     <div class="mb-3">
                         <label for="username" class="card-text mb-1">NIP :</label>
@@ -37,13 +37,13 @@
                     </div> -->
 
                     <div class="d-flex flex-column">
-                        <button type="submit" name="login" class="btn btn-primary"> <b>Login</b></button>
-                        {{-- <a type="button" name="register" class="btn btn-warning mt-2" href="{{ route('register') }}">Register</a> --}}
+                        <button type="submit" name="login" class="btn btn-primary" > <b>Login</b></button>
+                        <a href="{{route('register-admin')}}" type="button" name="register" class="btn btn-warning mt-2" >Register</a>
                     </div>
 
                     <div class="d-flex justify-content-center justify-end mt-4">
-                        @if (Route::has('password.request'))
-                            <a class="" href="{{ route('password.request') }}">
+                        @if (Route::has('password-admin.request'))
+                            <a class="" href="{{ route('password-admin.request') }}">
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif

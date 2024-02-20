@@ -11,6 +11,10 @@
                     <a href="/admin/dashboard" class="nav-link">Home</a>
                 </li>
             </ul>
+            <form action="{{ route('logout-admin') }}" method="POST">
+            @csrf
+            <button class="btn btn-primary">Logout</button>
+    </form>
         </nav>
     </div>
 </body>
