@@ -10,7 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\JadwalController;
-use App\Http\Controllers\Admin\DataAsdosController;
+use App\Http\Controllers\Admin\JadwalEditController;
 use App\Http\Controllers\Admin\MateriAdminController;
 use App\Http\Controllers\Admin\BuktiAdminController;
 use App\Http\Controllers\Admin\RekapNilaiController;
@@ -44,12 +44,16 @@ Route::get('/admin', function () {
 
 Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
 
-Route::get('/admin/dataasdos', [DataAsdosController::class, 'index'])->name('admin.dataasdos');
+
 Route::get('/admin/materi', [MateriAdminController::class, 'index'])->name('admin.materi');
 Route::get('/admin/rekapnilai', [RekapNilaiController::class, 'index'])->name('admin.rekapnilai');
+Route::delete('/admin/rekapnilai/destroy/{id}', [RekapNilaiController::class, 'destroy'])->name('admin.rekapnilai.destroy');
 Route::get('/admin/bukti', [BuktiAdminController::class, 'index'])->name('admin.bukti');
 Route::get('/admin/jadwal', [JadwalController::class, 'index'])->name('admin.jadwal');
-Route::post('/admin/jadwal/create/{id}', [JadwalController::class, 'store'])->name('jadwal.store');
+Route::get('/admin/jadwaledit', [JadwalController::class, 'show'])->name('admin.jadwaledit');
+Route::post('/admin/jadwal/show', [JadwalController::class, 'update'])->name('admin.jadwaledit.update');
+Route::post('/admin/jadwal/create', [JadwalController::class, 'store'])->name('jadwal.store');
+Route::delete('/admin/jadwal/destroy/{id}', [JadwalController::class, 'destroy'])->name('admin.jadwal.destroy');
 Route::get('/admin/absensi', [AbsensiController::class, 'index'])->name('admin.absensi');
 
 
@@ -85,6 +89,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // End of profile
+
+    //admin
 });
 
 require __DIR__.'/auth.php';

@@ -1,229 +1,125 @@
 @extends('layouts.admin')
 
 @section('content')
-<section class="content">
+    <!-- Main content -->
+    <section class="content">
+        @if (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @elseif(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        <div class="row">
+            <div class="col-12">
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h3 class="card-title">Rekap Nilai 1 Asisten Dosen Mata Kuliah SKPB</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive">
+                        <table id="rekapNilai1" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Kelas</th>
+                                    <th>File</th>
+                                    <th>Nama Asisten Dosen</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
 
-    <!-- Default box -->
-    <div class="card mt-3">
-      <div class="card-header">
-        <h3 class="card-title">Rekap Nilai 1</h3>
+                            <tbody>
+                                @foreach ($nilai1 as $key => $row)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $row->kelas->nama }}</td>
+                                        <td>
+                                            <a href="{{ url('/').'/storage/'.$row->file_path }}" target="blank" >{{ $row->filename }}</a>
+                                        </td>
+                                        <td>{{ $row->user->nama }}</td>
+                                        <td>
+                                                <div class="mx-1">
+                                                    <form action="{{route('admin.rekapnilai.destroy', $row->id)}}" method="post">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <input type="hidden" name="kelas_id" value="{{$row->id}}">
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
 
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-            <i class="fas fa-times"></i>
-          </button>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body p-0">
-        <table class="table table-striped projects">
-            <thead>
-                <tr>
-                    <th style="width: 1%">
-                        No.
-                    </th>
-                    <th style="width: 20%">
-                        Nama Asisten Dosen
-                    </th>
-                    <th style="width: 30%">
-                        Kelas
-                    </th>
-                    <th style="width: 8%" class="text-center">
-                        Status
-                    </th>
-                    <th style="width: 20%">
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        <a>
-                            AdminLTE v3
-                        </a>
-                    </td>
-                    <td>
-                        Kalkulus
-                    </td>
-                    <td class="project-state">
-                        <span class="badge badge-success">Success</span>
-                    </td>
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2
-                    </td>
-                    <td>
-                        <a>
-                            AdminLTE v3
-                        </a>
-                    </td>
-                    <td>
-                        Kalkulus
-                    </td>
-                    <td class="project-state">
-                        <span class="badge badge-success">Success</span>
-                    </td>
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-      </div>
-      <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card ">
+                    <div class="card-header">
+                        <h3 class="card-title">Rekap Nilai 2 Asisten Dosen Mata Kuliah SKPB</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive">
+                        <table id="rekapNilai2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Kelas</th>
+                                    <th>File</th>
+                                    <th>Nama Asisten Dosen</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
 
-  </section>
+                            <tbody>
+                                @foreach ($nilai2 as $key => $row)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $row->kelas->nama }}</td>
+                                        <td>
+                                            <a href="{{ url('/').'/storage/'.$row->file_path }}" target="blank" >{{ $row->filename }}</a>
+                                        </td>
+                                        <td>{{ $row->user->nama }}</td>
+                                        <td>
+                                                <div class="mx-1">
+                                                    <form action="{{route('admin.rekapnilai.destroy', $row->id)}}" method="post">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <input type="hidden" name="kelas_id" value="{{$row->id}}">
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
 
-  <section class="content">
-
-    <!-- Default box -->
-    <div class="card mt-3">
-      <div class="card-header">
-        <h3 class="card-title">Rekap Nilai 2</h3>
-
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-            <i class="fas fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-            <i class="fas fa-times"></i>
-          </button>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-body p-0">
-        <table class="table table-striped projects">
-            <thead>
-                <tr>
-                    <th style="width: 1%">
-                        No.
-                    </th>
-                    <th style="width: 20%">
-                        Nama Asisten Dosen
-                    </th>
-                    <th style="width: 30%">
-                        Kelas
-                    </th>
-                    <th style="width: 8%" class="text-center">
-                        Status
-                    </th>
-                    <th style="width: 20%">
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        <a>
-                            AdminLTE v3
-                        </a>
-                    </td>
-                    <td>
-                        Kalkulus
-                    </td>
-                    <td class="project-state">
-                        <span class="badge badge-success">Success</span>
-                    </td>
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2
-                    </td>
-                    <td>
-                        <a>
-                            AdminLTE v3
-                        </a>
-                    </td>
-                    <td>
-                        Kalkulus
-                    </td>
-                    <td class="project-state">
-                        <span class="badge badge-success">Success</span>
-                    </td>
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-      </div>
-      <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
-
-  </section>
+    </section>
 
 
-  @endsection
+@endsection
+
+@section('scripts')
+    <script>
+        let table = new DataTable('#rekapNilai1');
+        let table = new DataTable('#rekapNilai2');
+    </script>
+@endsection

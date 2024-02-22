@@ -35,28 +35,11 @@
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-                    <li class="nav-item menu-open">
-                        <a href="#" class="nav-link active">
-                            <i class='bx bxs-bug'></i>
-                            <p>
-                                Administrasi
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/admin/dataasdos" class="nav-link active">
-                                    <i class='bx bxs-folder-minus'></i>
-                                    <p>Data Asdos</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                     <li class="nav-item">
                         <a href="/admin/jadwal" class="nav-link active">
                             <i class='bx bxs-calendar'></i>
                             <p>
-                                Jadwal Kelas
+                                Data Asisten Dosen
                             </p>
                         </a>
                     </li>

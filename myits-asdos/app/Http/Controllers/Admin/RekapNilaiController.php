@@ -7,21 +7,27 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Kelas;
+use App\Models\Section;
+use Illuminate\Http\Request;
 
 
 class RekapNilaiController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
-    public function index() {
-        // Mengambil ID user saat ini yang sedang login
-        // $userId = Auth::id();
+    public function index()
+    {
+        $nilai1 = Section::where('rekap_nilai', '1')->get();
+        $nilai2 = Section::where('rekap_nilai', '2')->get();
 
-        // Mengambil data kelas berdasarkan user_id
-        // $kelas = Kelas::where('user_id', $userId)->get();
-        //dd($kelas);
-        // Menampilkan view dataasdos dan mengirim data kelas ke dalam view
-        return view('admin.rekapnilai');
+        return view('admin.rekapnilai', compact('nilai1', 'nilai2'));
     }
 
 
+    public function destroy(Request $request) {
+
+        Section::where('id', $request->kelas_id)
+        ->delete();
+
+        return redirect()->back()->with('success', 'File telah terhapus');
+    }
 }
