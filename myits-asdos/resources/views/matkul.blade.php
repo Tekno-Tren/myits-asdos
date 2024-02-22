@@ -63,6 +63,7 @@
                     </thead>
                     <tbody>
                         @foreach ($pertemuan as $key => $p)
+                        {{-- @dd($pertemuan) --}}
                         <tr>
                             <td align="center">
                                 {{ $key + 1 }}
