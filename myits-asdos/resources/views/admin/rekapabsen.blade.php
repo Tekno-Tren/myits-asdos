@@ -33,33 +33,28 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($nilai1 as $key => $row)
+                                @foreach ($kelas as $key => $row)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $row->kelas->nama }}</td>
+                                        <td>{{ $row->nama }}</td>
                                         <td>{{ $row->user->nama }}</td>
                                         <td>
                                             <div class="mx-1">
-                                                <a href="{{ route('admin.detail') }}"
-                                                    class="btn btn-secondary mx-1">Detail</a> {{-- <form action="{{route('admin.detail', $row->id)}}" method="post">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <input type="hidden" name="kelas_id" value="{{$row->id}}">
-                                                        <button type="submit" class="btn btn-danger">Detail</button>
-                                                    </form> --}}
+                                                <a href="{{ route('admin.detail.rekap', $row->id) }}"
+                                                    class="btn btn-secondary mx-1">
+                                                    Detail
+                                                </a>
                                             </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                    </td>
-                    </tr>
-                    @endforeach
-                    </tbody>
-
-                    </table>
                 </div>
-                <!-- /.card-body -->
             </div>
         </div>
-        </div>
+
     </section>
 @endsection
 

@@ -33,6 +33,6 @@ class Pertemuan extends Model
 
     public function bukti_kehadiran()
     {
-        return $this->hasOne('App\Models\Bukti', 'id', 'pertemuan_id');
+        return $this->hasOne('App\Models\Bukti', 'pertemuan_id', 'id');
     }
 }

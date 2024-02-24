@@ -33,12 +33,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::middleware('guest')->group(function(){
+    Route::get('/', function () {
+        return view('auth.login');
+    });
 
-Route::get('/admin', function () {
-    return view('admin.login');
+    Route::get('/admin', function () {
+        return view('admin.login');
+    });
 });
 
 // Pertemuan
@@ -87,6 +89,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/rekapnilai', [RekapNilaiController::class, 'index'])->name('admin.rekapnilai');
     Route::delete('/admin/rekapnilai/destroy/{id}', [RekapNilaiController::class, 'destroy'])->name('admin.rekapnilai.destroy');
     Route::get('/admin/rekapabsen', [RekapAbsenController::class, 'index'])->name('admin.rekapabsen');
+    Route::get('/admin/rekap/kelas/{id}', [RekapAbsenController::class, 'show'])->name('admin.detail.rekap');
     Route::delete('/admin/rekapabsen/destroy/{id}', [RekapAbsenController::class, 'destroy'])->name('admin.rekapabsen.destroy');
     Route::get('/admin/bukti', [BuktiAdminController::class, 'index'])->name('admin.bukti');
     Route::get('/admin/jadwal', [JadwalController::class, 'index'])->name('admin.jadwal');
@@ -100,7 +103,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/tambahkelas/show', [TambahKelasController::class, 'update'])->name('admin.kelasedit.update');
     Route::post('/admin/tambahkelas/create', [TambahKelasController::class, 'store'])->name('tambahkelas.store');
     Route::delete('/admin/tambahkelas/destroy/{id}', [TambahKelasController::class, 'destroy'])->name('admin.tambahkelas.destroy');
-    Route::get('/admin/detail', [DetailController::class, 'index'])->name('admin.detail');
 
 });
 

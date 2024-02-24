@@ -120,33 +120,59 @@
 
                                                 <input type="radio" id="{{ 'alpa_' . $p->id }}" class="btn_alpa"
                                                     name="p_{{ $p->id }}" value="0"
-                                                    data-pertemuan="{{ $p->id }}" disabled />
+                                                    data-pertemuan="{{ $p->id }}"
+                                                    {{ $p->status_kehadiran == 0 ? 'checked' : '' }} />
                                                 <label for="{{ 'alpa_' . $p->id }}">A</label>
                                             @endif
                                         </div>
                                     </td>
                                     <td align="center">
-                                        <form action="{{ route('materi.index', $p->id) }}" method="get">
-                                            @csrf
-                                            @method('GET')
-                                            <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
-                                                id="">
-                                            <input type="hidden" name="kelas_id" value="{{ $kelas->id }}"
-                                                id="">
-                                            <button type="submit" class="btn btn-outline-secondary mx-8 mt-3">Berita
-                                                Acara</button>
-                                        </form>
+                                        @if (Auth::check() && Auth::user()->departemen != '000')
+                                            <form action="{{ route('materi.index', $p->id) }}" method="get">
+                                                @csrf
+                                                @method('GET')
+                                                <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
+                                                    id="">
+                                                <input type="hidden" name="kelas_id" value="{{ $kelas->id }}"
+                                                    id="">
+                                                <button type="submit" class="btn btn-outline-secondary mx-8 mt-3">Berita
+                                                    Acara</button>
+                                            </form>
 
-                                        <form action="{{ route('bukti.index', $p->id) }}" method="get">
-                                            @csrf
-                                            @method('GET')
-                                            <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
-                                                id="">
-                                            <input type="hidden" name="kelas_id" value="{{ $kelas->id }}"
-                                                id="">
-                                            <button type="submit" class="btn btn-outline-secondary mx-8 mt-2">Bukti
-                                                Kehadiran</button>
-                                        </form>
+                                            <form action="{{ route('bukti.index', $p->id) }}" method="get">
+                                                @csrf
+                                                @method('GET')
+                                                <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
+                                                    id="">
+                                                <input type="hidden" name="kelas_id" value="{{ $kelas->id }}"
+                                                    id="">
+                                                <button type="submit" class="btn btn-outline-secondary mx-8 mt-2">Bukti
+                                                    Kehadiran</button>
+                                            </form>
+                                        @else
+                                            <a type="button" class="btn btn-outline-secondary mx-8 mt-2"
+                                                class="btn btn_modal btn-primary" data-id="{{ $p->id }}"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#beritaAcaraModal_{{ $p->id }}">
+                                                Berita Acara
+                                            </a>
+                                            @if ($p->bukti_kehadiran)
+                                                <a type="button"
+                                                    href="{{ url('/') . '/storage/' . $p->bukti_kehadiran->file_path }}"
+                                                    class="btn btn-outline-secondary mx-8 mt-2" target="blank">Bukti
+                                                    Kehadiran
+                                                </a>
+                                            @else
+                                                <button type="button" class="btn btn-outline-secondary mx-8 mt-2"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-custom-class="custom-tooltip"
+                                                    data-bs-title="Bukti belum di upload">
+                                                    Bukti
+                                                    Kehadiran
+                                                </button>
+                                            @endif
+                                        @endif
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -156,9 +182,44 @@
             </div>
         </div>
     </div>
+
+    @if (Auth::check() && Auth::user()->departemen != '000')
+        <div class="modal berita_acara fade" id="beritaAcaraModal_" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
 @endsection
 
 @section('scripts')
+    @if (Auth::check() && Auth::user()->departemen != '000')
+        <script>
+            // show modal
+            $('.btn_modal').on('click', function() {
+                var id = $(this).data('id');
+                $('.berita_acara').modal('show');
+            });
+
+
+
+        </script>
+    @endif
+
     <script>
         $('.btn_hadir, .btn_izin, .btn_sakit, .btn_alpa').on('change', function() {
             var id_pertemuan = $(this).data('pertemuan');
@@ -205,7 +266,7 @@
             $('#countIzin').text(countIzin);
             $('#countSakit').text(countSakit);
             $('#countAlpa').text(countAlpa);
-            $('#countTotal').text(countAlpa + countIzin + countHadir);
+            $('#countTotal').text(countAlpa + countIzin + countSakit + countHadir);
 
         }
     </script>
