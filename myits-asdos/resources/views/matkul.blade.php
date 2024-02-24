@@ -17,7 +17,8 @@
             <h3> {{ $kelas->nama_dosen }}</h3>
         </div>
         <div>
-            <a type="button" class="btn btn-outline-secondary mx-8" href="{{ route('pertemuan.index', 'matkul='. $kelas->id) }}">+ Pertemuan</a>
+            <a type="button" class="btn btn-outline-secondary mx-8"
+                href="{{ route('pertemuan.index', 'matkul=' . $kelas->id) }}">+ Pertemuan</a>
         </div>
     </div>
     <div class="container mb-3">
@@ -62,69 +63,94 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pertemuan as $key => $p)
-                        {{-- @dd($pertemuan) --}}
-                        <tr>
-                            <td align="center">
-                                {{ $key + 1 }}
-                            </td>
-                            <td align="center">
-                                <div>
-                                    <p>{{ $p->tanggal }}</p>
-                                    <p>{{ $p->jam }}</p>
-                                    <p>{{ $p->tempat }}</p>
-                                </div>
-                            </td>
-                            <td align="center">
-                                <div class="vertical-buttons switch-field justify-content-center">
-                                    @if ($p->materi && $p->filename)
-                                    <input type="radio" id="{{ 'hadir_' . $p->id }}" class="btn_hadir" name="p_{{ $p->id }}" value="1" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 1 ? 'checked' : '' }} />
-                                    <label for="{{ 'hadir_' . $p->id }}">H</label>
+                        @if ($pertemuan != '')
+                            @foreach ($pertemuan as $key => $p)
+                                <tr>
+                                    <td align="center">
+                                        {{ $key + 1 }}
+                                    </td>
+                                    <td align="center">
+                                        <div>
+                                            <p>{{ $p->tanggal }}</p>
+                                            <p>{{ $p->jam }}</p>
+                                            <p>{{ $p->tempat }}</p>
+                                        </div>
+                                    </td>
+                                    <td align="center">
+                                        <div class="vertical-buttons switch-field justify-content-center">
+                                            @if ($p->materi && $p->filename)
+                                                <input type="radio" id="{{ 'hadir_' . $p->id }}" class="btn_hadir"
+                                                    name="p_{{ $p->id }}" value="1"
+                                                    data-pertemuan="{{ $p->id }}"
+                                                    {{ $p->status_kehadiran == 1 ? 'checked' : '' }} />
+                                                <label for="{{ 'hadir_' . $p->id }}">H</label>
 
-                                    <input type="radio" id="{{ 'izin_' . $p->id }}" class="btn_izin" name="p_{{ $p->id }}" value="2" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 2 ? 'checked' : '' }} />
-                                    <label for="{{ 'izin_' . $p->id }}">I</label>
+                                                <input type="radio" id="{{ 'izin_' . $p->id }}" class="btn_izin"
+                                                    name="p_{{ $p->id }}" value="2"
+                                                    data-pertemuan="{{ $p->id }}"
+                                                    {{ $p->status_kehadiran == 2 ? 'checked' : '' }} />
+                                                <label for="{{ 'izin_' . $p->id }}">I</label>
 
-                                    <input type="radio" id="{{ 'sakit_' . $p->id }}" class="btn_sakit" name="p_{{ $p->id }}" value="3" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 3 ? 'checked' : '' }} />
-                                    <label for="{{ 'sakit_' . $p->id }}">S</label>
+                                                <input type="radio" id="{{ 'sakit_' . $p->id }}" class="btn_sakit"
+                                                    name="p_{{ $p->id }}" value="3"
+                                                    data-pertemuan="{{ $p->id }}"
+                                                    {{ $p->status_kehadiran == 3 ? 'checked' : '' }} />
+                                                <label for="{{ 'sakit_' . $p->id }}">S</label>
 
-                                    <input type="radio" id="{{ 'alpa_' . $p->id }}" class="btn_alpa" name="p_{{ $p->id }}" value="0" data-pertemuan="{{ $p->id }}" {{ $p->status_kehadiran == 0 ? 'checked' : '' }} />
-                                    <label for="{{ 'alpa_' . $p->id }}">A</label>
-                                    @else
-                                    <input type="radio" id="{{ 'hadir_' . $p->id }}" class="btn_hadir" name="p_{{ $p->id }}" value="1" data-pertemuan="{{ $p->id }}" disabled />
-                                    <label for="{{ 'hadir_' . $p->id }}">H</label>
+                                                <input type="radio" id="{{ 'alpa_' . $p->id }}" class="btn_alpa"
+                                                    name="p_{{ $p->id }}" value="0"
+                                                    data-pertemuan="{{ $p->id }}"
+                                                    {{ $p->status_kehadiran == 0 ? 'checked' : '' }} />
+                                                <label for="{{ 'alpa_' . $p->id }}">A</label>
+                                            @else
+                                                <input type="radio" id="{{ 'hadir_' . $p->id }}" class="btn_hadir"
+                                                    name="p_{{ $p->id }}" value="1"
+                                                    data-pertemuan="{{ $p->id }}" disabled />
+                                                <label for="{{ 'hadir_' . $p->id }}">H</label>
 
-                                    <input type="radio" id="{{ 'izin_' . $p->id }}" class="btn_izin" name="p_{{ $p->id }}" value="2" data-pertemuan="{{ $p->id }}" disabled />
-                                    <label for="{{ 'izin_' . $p->id }}">I</label>
+                                                <input type="radio" id="{{ 'izin_' . $p->id }}" class="btn_izin"
+                                                    name="p_{{ $p->id }}" value="2"
+                                                    data-pertemuan="{{ $p->id }}" disabled />
+                                                <label for="{{ 'izin_' . $p->id }}">I</label>
 
-                                    <input type="radio" id="{{ 'sakit_' . $p->id }}" class="btn_sakit" name="p_{{ $p->id }}" value="3" data-pertemuan="{{ $p->id }}" disabled />
-                                    <label for="{{ 'sakit_' . $p->id }}">S</label>
+                                                <input type="radio" id="{{ 'sakit_' . $p->id }}" class="btn_sakit"
+                                                    name="p_{{ $p->id }}" value="3"
+                                                    data-pertemuan="{{ $p->id }}" disabled />
+                                                <label for="{{ 'sakit_' . $p->id }}">S</label>
 
-                                    <input type="radio" id="{{ 'alpa_' . $p->id }}" class="btn_alpa" name="p_{{ $p->id }}" value="0" data-pertemuan="{{ $p->id }}" disabled />
-                                    <label for="{{ 'alpa_' . $p->id }}">A</label>
-                                    @endif
-                                </div>
-                            </td>
-                            <td align="center">
-                                <form action="{{ route('materi.index', $p->id) }}" method="get">
-                                    @csrf
-                                    @method('GET')
-                                    <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
-                                        id="">
-                                    <input type="hidden" name="kelas_id" value="{{ $kelas->id }}" id="">
-                                    <button type="submit" class="btn btn-outline-secondary mx-8 mt-3">Berita Acara</button>
-                                </form>
+                                                <input type="radio" id="{{ 'alpa_' . $p->id }}" class="btn_alpa"
+                                                    name="p_{{ $p->id }}" value="0"
+                                                    data-pertemuan="{{ $p->id }}" disabled />
+                                                <label for="{{ 'alpa_' . $p->id }}">A</label>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td align="center">
+                                        <form action="{{ route('materi.index', $p->id) }}" method="get">
+                                            @csrf
+                                            @method('GET')
+                                            <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
+                                                id="">
+                                            <input type="hidden" name="kelas_id" value="{{ $kelas->id }}"
+                                                id="">
+                                            <button type="submit" class="btn btn-outline-secondary mx-8 mt-3">Berita
+                                                Acara</button>
+                                        </form>
 
-                                <form action="{{ route('bukti.index', $p->id) }}" method="get">
-                                    @csrf
-                                    @method('GET')
-                                    <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
-                                        id="">
-                                    <input type="hidden" name="kelas_id" value="{{ $kelas->id }}" id="">
-                                    <button type="submit" class="btn btn-outline-secondary mx-8 mt-2">Bukti Kehadiran</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
+                                        <form action="{{ route('bukti.index', $p->id) }}" method="get">
+                                            @csrf
+                                            @method('GET')
+                                            <input type="hidden" name="pertemuan_id" value="{{ $p->id }}"
+                                                id="">
+                                            <input type="hidden" name="kelas_id" value="{{ $kelas->id }}"
+                                                id="">
+                                            <button type="submit" class="btn btn-outline-secondary mx-8 mt-2">Bukti
+                                                Kehadiran</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -133,23 +159,23 @@
 @endsection
 
 @section('scripts')
-<script>
-    $('.btn_hadir, .btn_izin, .btn_sakit, .btn_alpa').on('change', function() {
-        var id_pertemuan = $(this).data('pertemuan');
-        var status = $(this).val();
-        $.ajax({
-            url: "{{ route('update.kehadiran') }}",
-            // url: "https://6ef8-182-253-50-130.ngrok-free.app/update-kehadiran",
-            type: "POST",
-            data: {
-                id_pertemuan: id_pertemuan,
-                status: status,
-                _token: "{{ csrf_token() }}"
-            },
-            success: function(data) {
-                var message = data.message;
+    <script>
+        $('.btn_hadir, .btn_izin, .btn_sakit, .btn_alpa').on('change', function() {
+            var id_pertemuan = $(this).data('pertemuan');
+            var status = $(this).val();
+            $.ajax({
+                url: "{{ route('update.kehadiran') }}",
+                // url: "https://6ef8-182-253-50-130.ngrok-free.app/update-kehadiran",
+                type: "POST",
+                data: {
+                    id_pertemuan: id_pertemuan,
+                    status: status,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function(data) {
+                    var message = data.message;
 
-                $('#alert_message').append(`
+                    $('#alert_message').append(`
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
                     ${message}
 
@@ -158,29 +184,29 @@
 
                 </div>
                 `), setTimeout(() => {
-                    $('#alert_message').empty();
-                }, 3000)
-                countHadir();
-            }
+                        $('#alert_message').empty();
+                    }, 3000)
+                    countHadir();
+                }
+            });
         });
-    });
-</script>
+    </script>
 
-<script>
-            countHadir();
+    <script>
+        countHadir();
 
         function countHadir() {
-        let countHadir = $('input[type="radio"][id^="hadir_"]:checked').length;
-        let countIzin = $('input[type="radio"][id^="izin_"]:checked').length;
-        let countAlpa = $('input[type="radio"][id^="alpa_"]:checked').length;
-        let countSakit = $('input[type="radio"][id^="sakit_"]:checked').length;
+            let countHadir = $('input[type="radio"][id^="hadir_"]:checked').length;
+            let countIzin = $('input[type="radio"][id^="izin_"]:checked').length;
+            let countAlpa = $('input[type="radio"][id^="alpa_"]:checked').length;
+            let countSakit = $('input[type="radio"][id^="sakit_"]:checked').length;
 
-        $('#countHadir').text(countHadir);
-        $('#countIzin').text(countIzin);
-        $('#countSakit').text(countSakit);
-        $('#countAlpa').text(countAlpa);
-        $('#countTotal').text(countAlpa + countIzin + countHadir );
+            $('#countHadir').text(countHadir);
+            $('#countIzin').text(countIzin);
+            $('#countSakit').text(countSakit);
+            $('#countAlpa').text(countAlpa);
+            $('#countTotal').text(countAlpa + countIzin + countHadir);
 
-    }
-</script>
+        }
+    </script>
 @endsection

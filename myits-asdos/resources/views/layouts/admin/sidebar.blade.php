@@ -11,7 +11,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="info">
-                    <a href="#" class="d-block">Delila</a>
+                    <a class="d-block"> {{ Auth::user()->nama }} </a>
                 </div>
             </div>
 
@@ -36,10 +36,27 @@
                with font-awesome or any other icon font library -->
 
                     <li class="nav-item">
+                        <a href="/admin/tambahkelas" class="nav-link active">
+                            <i class='bx bxs-calendar'></i>
+                            <p>
+                                Data Kelas
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="/admin/jadwal" class="nav-link active">
                             <i class='bx bxs-calendar'></i>
                             <p>
                                 Data Asisten Dosen
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/admin/rekapabsen" class="nav-link active">
+                            <i class='bx bxs-calendar'></i>
+                            <p>
+                                Rekap Absen
                             </p>
                         </a>
                     </li>

@@ -23,14 +23,14 @@
             <div class="row">
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-info text-align-center">
+                    <!-- <div class="small-box bg-info text-align-center">
                         <div class="inner">
                             <h3>150</h3>
 
                             <p>Asisten Dosen</p>
                         </div>
                         <h5 class="small-box-footer">Jumlah Kehadiran</h5>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- /.row -->

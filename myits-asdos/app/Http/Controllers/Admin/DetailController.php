@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -10,16 +10,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Pertemuan;
 
 
-class MatkulController extends BaseController
+class DetailController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
     public function index($id) {
         $kelas = Kelas::findOrFail( $id );
         $user = Auth::user();
-        $is_pertemuan = Pertemuan::where('kelas_id', $id)->first();
-        if($is_pertemuan) {
-            $pertemuan = Pertemuan::rightJoin('kelas', 'pertemuan.kelas_id', '=', 'kelas.id')
+        $pertemuan = Pertemuan::rightJoin('kelas', 'pertemuan.kelas_id', '=', 'kelas.id')
             ->leftJoin('materi', 'pertemuan.id', '=', 'materi.pertemuan_id')
             ->leftJoin('buktifoto', 'pertemuan.id', '=', 'buktifoto.pertemuan_id')
             ->where('kelas.id', $id)
@@ -27,13 +25,12 @@ class MatkulController extends BaseController
             ->select('pertemuan.*', 'materi.materi', 'buktifoto.filename')
             ->get();
 
-            return view('matkul', compact('kelas', 'pertemuan'));
-
-        } else {
-            $pertemuan = '';
-            return view('matkul', compact('kelas', 'pertemuan'));
-        }
+        return view('admin.detail', compact('kelas', 'pertemuan'));
     }
-
-
+    // public function index() {
+    //     $user_id = Auth::id();
+    //     $kelas_id = Kelas::where('user_id', $user_id)->first()->id;
+    //     $tugas_list = Section::where('user_id', $user_id)->where('kelas_id', $kelas_id)->get();
+    //     return view('section', compact('user_id', 'kelas_id', 'tugas_list'));
+    // }
 }

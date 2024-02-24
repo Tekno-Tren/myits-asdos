@@ -32,27 +32,22 @@ class JadwalController extends BaseController
         if ($is_semester) {
             $kelas = Kelas::where('tahun', $this_year)
                 ->where('semester', $is_semester)
+                ->where('user_id', "!=", null)
                 ->get();
-            return view('admin.jadwal', compact('asdos', 'kelas'));
+            $kelas_plotting = Kelas::where('tahun', $this_year)
+                ->where('semester', $is_semester)
+                ->where('user_id', null)
+                ->get();
+            return view('admin.jadwal', compact('asdos', 'kelas', 'kelas_plotting'));
         }
         return view('admin.jadwal', compact('asdos'));
     }
     public function store(Request $request)
     {
         try {
-            $request->validate([
-                'user_id' => ['required'],
-                'nama' => ['required'],
-                'nama_dosen' => ['required', 'string'],
-                'semester' => ['required', 'string'],
-                'tahun' => ['required'],
-            ]);
-            $kelas = Kelas::create([
+            $kelas = Kelas::where('id', $request->kelas_id)
+            ->update([
                 'user_id' => $request->user_id,
-                'nama' => $request->nama,
-                'nama_dosen' => $request->nama_dosen,
-                'semester' => $request->semester,
-                'tahun' => $request->tahun,
             ]);
             return redirect()->back()->with('success', 'Kelas berhasil ditambahkan');
         } catch (\Exception $e) {
@@ -60,32 +55,20 @@ class JadwalController extends BaseController
         }
     }
 
-    public function show(Request $request)
+    public function show(Request $request, $id)
     {
         $asdos = User::where('departemen', '!=', '000')->get();
-        $kelas = Kelas::where('id', $request->query('kelas_id'))->first();
+        $kelas = Kelas::where('id', $id)->first();
         return view('admin.jadwaledit', compact('asdos', 'kelas'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
 
         try {
-            $request->validate([
-                'user_id' => ['required'],
-                'kelas_id' => ['required'],
-                'nama' => ['required'],
-                'nama_dosen' => ['required', 'string'],
-                'semester' => ['required', 'string'],
-                'tahun' => ['required'],
-            ]);
-            $kelas = Kelas::where('id', $request->kelas_id)
+            $kelas = Kelas::where('id', $id)
                 ->update([
-                    'user_id' => $request->user_id,
-                    'nama' => $request->nama,
-                    'nama_dosen' => $request->nama_dosen,
-                    'semester' => $request->semester,
-                    'tahun' => $request->tahun,
+                    'user_id' => $request->user_id
                 ]);
             return redirect()->back()->with('success', 'Kelas berhasil di update');
         } catch (\Exception $e) {

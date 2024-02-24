@@ -13,6 +13,7 @@ class DashboardAdminController extends BaseController
     use AuthorizesRequests, ValidatesRequests;
 
     public function index() {
+        $userId = Auth::id();
         // Mengambil ID user saat ini yang sedang login
         // $userId = Auth::id();
 
