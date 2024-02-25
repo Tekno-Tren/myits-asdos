@@ -64,13 +64,12 @@ class JadwalController extends BaseController
 
     public function update(Request $request, $id)
     {
-
         try {
-            $kelas = Kelas::where('id', $id)
+            Kelas::where('id', $id)
                 ->update([
                     'user_id' => $request->user_id
-                ]);
-            return redirect()->back()->with('success', 'Kelas berhasil di update');
+            ]);
+            return redirect('/admin/jadwal')->with('success', 'Kelas berhasil di update');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Pertemuan gagal ditambahkan');
         }

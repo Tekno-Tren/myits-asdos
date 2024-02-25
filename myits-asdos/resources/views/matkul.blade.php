@@ -150,12 +150,12 @@
                                                     Kehadiran</button>
                                             </form>
                                         @else
-                                            <a type="button" class="btn btn-outline-secondary mx-8 mt-2"
-                                                class="btn btn_modal btn-primary" data-id="{{ $p->id }}"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#beritaAcaraModal_{{ $p->id }}">
-                                                Berita Acara
-                                            </a>
+                                        <button type="button" class="btn btn-berita_acara btn-outline-secondary mx-8 mt-2"
+                                        class="btn btn_modal btn-primary" data-id="{{ $p->id }}" onclick="modalBeritaAcara('{!!$p->berita_acara != null ? $p->berita_acara->materi : ''!!}')"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#beritaAcaraModal">
+                                        Berita Acara
+                                    </button>
                                             @if ($p->bukti_kehadiran)
                                                 <a type="button"
                                                     href="{{ url('/') . '/storage/' . $p->bukti_kehadiran->file_path }}"
@@ -183,21 +183,20 @@
         </div>
     </div>
 
-    @if (Auth::check() && Auth::user()->departemen != '000')
-        <div class="modal berita_acara fade" id="beritaAcaraModal_" tabindex="-1" aria-labelledby="exampleModalLabel"
+    @if (Auth::check() && Auth::user()->departemen == '000')
+        <div class="modal berita_acara fade" id="beritaAcaraModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Berita Acara</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <p id="content-berita_acara"></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -207,15 +206,14 @@
 @endsection
 
 @section('scripts')
-    @if (Auth::check() && Auth::user()->departemen != '000')
+    @if (Auth::check() && Auth::user()->departemen == '000')
         <script>
             // show modal
-            $('.btn_modal').on('click', function() {
-                var id = $(this).data('id');
-                $('.berita_acara').modal('show');
-            });
-
-
+            function modalBeritaAcara(content) {
+                $('#content-berita_acara').empty();
+ ;               $('#content-berita_acara').append('<p>' + content + '</p>');
+                $('#beritaAcaraModal').modal('show');
+            }
 
         </script>
     @endif

@@ -80,7 +80,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('jadwal.store') }}" method="POST">
+                                <form action="{{ route('admin.jadwal.store') }}" method="POST">
                                     @csrf
                                     @method('post')
                                     <div class="mb-3">
@@ -126,7 +126,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('jadwal.store') }}" method="POST">
+                                <form action="{{ route('admin.jadwal.store') }}" method="POST">
                                     @csrf
                                     @method('post')
                                     <div class="mb-3">

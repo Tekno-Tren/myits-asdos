@@ -26,9 +26,9 @@ class Pertemuan extends Model
         return $this->belongsTo('App\Models\Kelas', 'kelas_id', 'id');
     }
 
-    public function materi()
+    public function berita_acara()
     {
-        return $this->hasOne('App\Models\Materi', 'id', 'pertemuan_id');
+        return $this->hasOne('App\Models\Materi', 'pertemuan_id', 'id');
     }
 
     public function bukti_kehadiran()
