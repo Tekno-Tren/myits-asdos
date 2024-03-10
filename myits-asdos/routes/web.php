@@ -82,28 +82,29 @@ Route::middleware('auth')->group(function () {
     // End of profile
 
     // admin
+    Route::middleware('admin')->group(function () {
 
-    Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
 
-    Route::get('/admin/materi', [MateriAdminController::class, 'index'])->name('admin.materi');
-    Route::get('/admin/rekapnilai', [RekapNilaiController::class, 'index'])->name('admin.rekapnilai');
-    Route::delete('/admin/rekapnilai/destroy/{id}', [RekapNilaiController::class, 'destroy'])->name('admin.rekapnilai.destroy');
-    Route::get('/admin/rekapabsen', [RekapAbsenController::class, 'index'])->name('admin.rekapabsen');
-    Route::get('/admin/rekap/kelas/{id}', [RekapAbsenController::class, 'show'])->name('admin.detail.rekap');
-    Route::delete('/admin/rekapabsen/destroy/{id}', [RekapAbsenController::class, 'destroy'])->name('admin.rekapabsen.destroy');
-    Route::get('/admin/bukti', [BuktiAdminController::class, 'index'])->name('admin.bukti');
-    Route::get('/admin/jadwal', [JadwalController::class, 'index'])->name('admin.jadwal');
-    Route::get('/admin/jadwaledit/{id}', [JadwalController::class, 'show'])->name('admin.jadwaledit');
-    Route::post('/admin/jadwal/show/{id}', [JadwalController::class, 'update'])->name('admin.jadwaledit.update');
-    Route::post('/admin/jadwal/create', [JadwalController::class, 'store'])->name('admin.jadwal.store');
-    Route::delete('/admin/jadwal/destroy/{id}', [JadwalController::class, 'destroy'])->name('admin.jadwal.destroy');
-    Route::get('/admin/absensi', [AbsensiController::class, 'index'])->name('admin.absensi');
-    Route::get('/admin/tambahkelas', [TambahKelasController::class, 'index'])->name('admin.tambahkelas');
-    Route::get('/admin/kelasedit', [TambahKelasController::class, 'show'])->name('admin.kelasedit');
-    Route::post('/admin/tambahkelas/show', [TambahKelasController::class, 'update'])->name('admin.kelasedit.update');
-    Route::post('/admin/tambahkelas/create', [TambahKelasController::class, 'store'])->name('tambahkelas.store');
-    Route::delete('/admin/tambahkelas/destroy/{id}', [TambahKelasController::class, 'destroy'])->name('admin.tambahkelas.destroy');
-
+        Route::get('/admin/materi', [MateriAdminController::class, 'index'])->name('admin.materi');
+        Route::get('/admin/rekapnilai', [RekapNilaiController::class, 'index'])->name('admin.rekapnilai');
+        Route::delete('/admin/rekapnilai/destroy/{id}', [RekapNilaiController::class, 'destroy'])->name('admin.rekapnilai.destroy');
+        Route::get('/admin/rekapabsen', [RekapAbsenController::class, 'index'])->name('admin.rekapabsen');
+        Route::get('/admin/rekap/kelas/{id}', [RekapAbsenController::class, 'show'])->name('admin.detail.rekap');
+        Route::delete('/admin/rekapabsen/destroy/{id}', [RekapAbsenController::class, 'destroy'])->name('admin.rekapabsen.destroy');
+        Route::get('/admin/bukti', [BuktiAdminController::class, 'index'])->name('admin.bukti');
+        Route::get('/admin/jadwal', [JadwalController::class, 'index'])->name('admin.jadwal');
+        Route::get('/admin/jadwaledit/{id}', [JadwalController::class, 'show'])->name('admin.jadwaledit');
+        Route::post('/admin/jadwal/show/{id}', [JadwalController::class, 'update'])->name('admin.jadwaledit.update');
+        Route::post('/admin/jadwal/create', [JadwalController::class, 'store'])->name('admin.jadwal.store');
+        Route::delete('/admin/jadwal/destroy/{id}', [JadwalController::class, 'destroy'])->name('admin.jadwal.destroy');
+        Route::get('/admin/absensi', [AbsensiController::class, 'index'])->name('admin.absensi');
+        Route::get('/admin/tambahkelas', [TambahKelasController::class, 'index'])->name('admin.tambahkelas');
+        Route::get('/admin/kelasedit', [TambahKelasController::class, 'show'])->name('admin.kelasedit');
+        Route::post('/admin/tambahkelas/show', [TambahKelasController::class, 'update'])->name('admin.kelasedit.update');
+        Route::post('/admin/tambahkelas/create', [TambahKelasController::class, 'store'])->name('tambahkelas.store');
+        Route::delete('/admin/tambahkelas/destroy/{id}', [TambahKelasController::class, 'destroy'])->name('admin.tambahkelas.destroy');
+    });
 });
 
 require __DIR__.'/auth.php';
