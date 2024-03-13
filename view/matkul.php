@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,7 +67,36 @@
       li {
         float: left;
       }
+
+      .hisa-button{
+        width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%; cursor: pointer;
+      }
     </style>
+   <script>
+        // Fungsi untuk merubah warna tombol dalam grup
+        function changeColor(button, group) {
+            // Mendapatkan elemen yang menjadi parent tombol
+            var parentElement = button.parentElement;
+
+            // Mendapatkan koleksi tombol dalam grup
+            var buttonsInGroup = parentElement.querySelectorAll('.hisa-button');
+
+            // Toggle: mengembalikan warna semua tombol dalam grup ke warna asal jika tombol yang diklik sudah berwarna hijau
+            if (button.style.backgroundColor === 'green') {
+                buttonsInGroup.forEach(function(btn) {
+                    btn.style.backgroundColor = '';
+                });
+            } else {
+                // Mengembalikan warna semua tombol dalam grup ke warna asal
+                buttonsInGroup.forEach(function(btn) {
+                    btn.style.backgroundColor = '';
+                });
+
+                // Mengubah warna latar belakang tombol yang diklik menjadi hijau
+                button.style.backgroundColor = 'green';
+            }
+        }
+    </script>
   </head>
   <body style="background-color: lightgray">
     <header>
@@ -81,7 +109,7 @@
                 <div id="navmenu">
                     <ul class="navbar-nav">
                         <li class="nav item">
-                            <a href="header.php" class="kembali">Kembali</a>
+                          <a href="dashboard.php" class="kembali">Kembali</a>
                         </li>
                     </ul>
                 </div>
@@ -125,24 +153,25 @@
           <td rowspan="3" align="center">1</td>
           <td align="center">Senin, 26 Februari 2024</td>
           <td rowspan="3" align="left">
-            <ul>
+          <ul>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">H</button>
+              <button class="hisa-button" onclick="changeColor(this, 1)">H</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">I</button>
+              <button class="hisa-button" onclick="changeColor(this, 1)">I</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">S</button>
+              <button class="hisa-button" onclick="changeColor(this, 1)" >S</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">A</button>
+              <button class="hisa-button" onclick="changeColor(this, 1)">A</button>
             </ul>
           </td>
+
           <td rowspan="3" align="center">
             <ul>
               <li><a href=""></a></li>
-              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">Materi</button>
+              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"><a href="materi.php">Materi</button>
               <br />
               <li><a href=""></a></li>
-              <button style="width: 125px; background-color: #bacfe6">Foto Kehadiran</button>
+              <button style="width: 125px; background-color: #bacfe6"><a href="bukti.php">Foto Kehadiran</button>
             </ul>
           </td>
         </tr>
@@ -155,26 +184,26 @@
 
         <tr>
           <td rowspan="3" align="center">2</td>
-          <td align="center">Senin, 26 Februari 2024</td>
+          <td align="center">Senin, 27 Februari 2024</td>
           <td rowspan="3" align="left">
             <ul>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">H</button>
+              <button class="hisa-button" onclick="changeColor(this, 2)">H</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">I</button>
+              <button class="hisa-button" onclick="changeColor(this, 2)">I</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">S</button>
+              <button class="hisa-button"  onclick="changeColor(this, 2)" >S</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">A</button>
+              <button class="hisa-button"  onclick="changeColor(this, 2)">A</button>
             </ul>
           </td>
           <td rowspan="3" align="center">
             <ul>
               <li><a href=""></a></li>
-              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">Materi</button>
+              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"><a href="materi.php">Materi</button>
               <br />
               <li><a href=""></a></li>
-              <button style="width: 125px; background-color: #bacfe6">Foto Kehadiran</button>
+              <button style="width: 125px; background-color: #bacfe6"><a href="bukti.php">Foto Kehadiran</button>
             </ul>
           </td>
         </tr>
@@ -187,26 +216,26 @@
 
         <tr>
           <td rowspan="3" align="center">3</td>
-          <td align="center">Senin, 26 Februari 2024</td>
+          <td align="center">Senin, 28 Februari 2024</td>
           <td rowspan="3" align="left">
-            <ul>
+          <ul>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">H</button>
+              <button class="hisa-button"  onclick="changeColor(this, 3)">H</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">I</button>
+              <button class="hisa-button"  onclick="changeColor(this, 3)">I</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">S</button>
+              <button class="hisa-button"  onclick="changeColor(this, 3)">S</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">A</button>
+              <button class="hisa-button"  onclick="changeColor(this, 3)">A</button>
             </ul>
           </td>
           <td rowspan="3" align="center">
             <ul>
               <li><a href=""></a></li>
-              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">Materi</button>
+              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"><a href="materi.php">Materi</button>
               <br />
               <li><a href=""></a></li>
-              <button style="width: 125px; background-color: #bacfe6">Foto Kehadiran</button>
+              <button style="width: 125px; background-color: #bacfe6"><a href="bukti.php">Foto Kehadiran</button>
             </ul>
           </td>
         </tr>
@@ -219,26 +248,26 @@
 
         <tr>
           <td rowspan="3" align="center">4</td>
-          <td align="center">Senin, 26 Februari 2024</td>
+          <td align="center">Senin, 29 Februari 2024</td>
           <td rowspan="3" align="left">
-            <ul>
+          <ul>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">H</button>
+              <button class="hisa-button"  onclick="changeColor(this, 4)">H</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">I</button>
+              <button class="hisa-button"  onclick="changeColor(this, 4)">I</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">S</button>
+              <button class="hisa-button"  onclick="changeColor(this, 4)">S</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">A</button>
+              <button class="hisa-button"  onclick="changeColor(this, 4)">A</button>
             </ul>
           </td>
           <td rowspan="3" align="center">
             <ul>
               <li><a href=""></a></li>
-              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">Materi</button>
+              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"><a href="materi.php">Materi</button>
               <br />
               <li><a href=""></a></li>
-              <button style="width: 125px; background-color: #bacfe6">Foto Kehadiran</button>
+              <button style="width: 125px; background-color: #bacfe6"><a href="bukti.php">Foto Kehadiran</button>
             </ul>
           </td>
         </tr>
@@ -251,26 +280,26 @@
 
         <tr>
           <td rowspan="3" align="center">5</td>
-          <td align="center">Senin, 26 Februari 2024</td>
+          <td align="center">Senin, 1 Maret 2024</td>
           <td rowspan="3" align="left">
-            <ul>
+          <ul>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">H</button>
+              <button class="hisa-button"  onclick="changeColor(this, 5)">H</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">I</button>
+              <button class="hisa-button"  onclick="changeColor(this, 5)">I</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">S</button>
+              <button class="hisa-button"  onclick="changeColor(this, 5)">S</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">A</button>
+              <button class="hisa-button"  onclick="changeColor(this, 5)">A</button>
             </ul>
           </td>
           <td rowspan="3" align="center">
             <ul>
               <li><a href=""></a></li>
-              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">Materi</button>
+              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"><a href="materi.php">Materi</button>
               <br />
               <li><a href=""></a></li>
-              <button style="width: 125px; background-color: #bacfe6">Foto Kehadiran</button>
+              <button style="width: 125px; background-color: #bacfe6"><a href="bukti.php">Foto Kehadiran</button>
             </ul>
           </td>
         </tr>
@@ -283,26 +312,26 @@
 
         <tr>
           <td rowspan="3" align="center">6</td>
-          <td align="center">Senin, 26 Februari 2024</td>
+          <td align="center">Senin, 2 Maret 2024</td>
           <td rowspan="3" align="left">
-            <ul>
+          <ul>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">H</button>
+              <button class="hisa-button"  onclick="changeColor(this, 6)">H</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">I</button>
+              <button class="hisa-button"  onclick="changeColor(this, 6)">I</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">S</button>
+              <button class="hisa-button"  onclick="changeColor(this, 6)">S</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">A</button>
+              <button class="hisa-button"  onclick="changeColor(this, 6)">A</button>
             </ul>
           </td>
           <td rowspan="3" align="center">
             <ul>
               <li><a href=""></a></li>
-              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">Materi</button>
+              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"><a href="materi.php">Materi</button>
               <br />
               <li><a href=""></a></li>
-              <button style="width: 125px; background-color: #bacfe6">Foto Kehadiran</button>
+              <button style="width: 125px; background-color: #bacfe6"><a href="bukti.php">Foto Kehadiran</button>
             </ul>
           </td>
         </tr>
@@ -315,26 +344,26 @@
 
         <tr>
           <td rowspan="3" align="center">7</td>
-          <td align="center">Senin, 26 Februari 2024</td>
+          <td align="center">Senin, 3 Maret 2024</td>
           <td rowspan="3" align="left">
-            <ul>
+          <ul>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">H</button>
+              <button class="hisa-button"  onclick="changeColor(this, 7)">H</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">I</button>
+              <button class="hisa-button"  onclick="changeColor(this, 7)">I</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">S</button>
+              <button class="hisa-button"  onclick="changeColor(this, 7)">S</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">A</button>
+              <button class="hisa-button"  onclick="changeColor(this, 7)">A</button>
             </ul>
           </td>
           <td rowspan="3" align="center">
             <ul>
               <li><a href=""></a></li>
-              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">Materi</button>
+              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"><a href="materi.php">Materi</button>
               <br />
               <li><a href=""></a></li>
-              <button style="width: 125px; background-color: #bacfe6">Foto Kehadiran</button>
+              <button style="width: 125px; background-color: #bacfe6"><a href="bukti.php">Foto Kehadiran</button>
             </ul>
           </td>
         </tr>
@@ -347,26 +376,26 @@
 
         <tr>
           <td rowspan="3" align="center">8</td>
-          <td align="center">Senin, 26 Februari 2024</td>
+          <td align="center">Senin, 4 Maret 2024</td>
           <td rowspan="3" align="left">
-            <ul>
+          <ul>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">H</button>
+              <button class="hisa-button"  onclick="changeColor(this, 8)">H</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">I</button>
+              <button class="hisa-button"  onclick="changeColor(this, 8)">I</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">S</button>
+              <button class="hisa-button"  onclick="changeColor(this, 8)">S</button>
               <li><a href=""></a></li>
-              <button style="width: 30px; height: 30px; background-color: #bacfe6; border-radius: 50%">A</button>
+              <button class="hisa-button"  onclick="changeColor(this, 8)">A</button>
             </ul>
           </td>
           <td rowspan="3" align="center">
             <ul>
               <li><a href=""></a></li>
-              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6">Materi</button>
+              <button style="width: 125px; margin-bottom: 5px; background-color: #bacfe6"><a href="materi.php">Materi</button>
               <br />
               <li><a href=""></a></li>
-              <button style="width: 125px; background-color: #bacfe6">Foto Kehadiran</button>
+              <button style="width: 125px; background-color: #bacfe6"><a href="bukti.php">Foto Kehadiran</button>
             </ul>
           </td>
         </tr>
@@ -378,5 +407,6 @@
         </tr>
       </table>
     </footer>
+
   </body>
 </html>
