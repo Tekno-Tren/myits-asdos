@@ -89,9 +89,9 @@ class TambahKelasController extends BaseController
         }
     }
 
-    public function destroy(Request $request) {
+    public function destroy(Request $request, $id) {
 
-        Kelas::where('id', $request->kelas_id)
+        Kelas::where('id', $id)
         ->delete();
 
         return redirect()->back()->with('success', 'Kelas telah terhapus');

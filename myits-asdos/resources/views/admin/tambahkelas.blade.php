@@ -33,10 +33,10 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Kelas</th>
+                                    <th style="width: 88%">Kelas</th>
                                     {{-- <th>Nama Dosen</th> --}}
                                     {{-- <th>Nama Asisten Dosen</th> --}}
-                                    {{-- <th>Action</th> --}}
+                                    <th style="width: 10%">Action</th>
                                 </tr>
                             </thead>
 
@@ -47,20 +47,18 @@
                                         <td>{{ $row->nama }}</td>
                                         {{-- <td>{{ $row->nama_dosen }}</td> --}}
                                         {{-- <td>{{ $row->user->nama }}</td> --}}
-                                        {{-- <td>
+                                        <td>
                                             <div class="d-flex flex-justify-content-between">
-                                                <a href="{{ route('admin.kelasedit', 'kelas_id=' . $row->id) }}"
-                                                    class="btn btn-secondary mx-1">Edit</a>
                                                 <div class="mx-1">
                                                     <form action="{{route('admin.tambahkelas.destroy', $row->id)}}" method="post">
                                                         @method('DELETE')
                                                         @csrf
-                                                        <input type="hidden" name="kelas_id" value="{{$row->id}}">
+                                                        {{-- <input type="hidden" name="kelas_id" value="{{$row->id}}"> --}}
                                                         <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
                                                 </div>
                                             </div>
-                                        </td> --}}
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
