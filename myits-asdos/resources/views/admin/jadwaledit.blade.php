@@ -43,7 +43,7 @@
                                 </select>
                             </div>
                             <div class="">
-                                <button type="button" class="btn btn-secondary mx-1" data-bs-dismiss="modal">Batal</button>
+                                <a href="{{ route('admin.jadwal') }}" class="btn btn-secondary mx-1">Batal</a>
                                 <button type="submit" class="btn btn-primary mx-1">Submit</button>
                             </div>
                         </div>
