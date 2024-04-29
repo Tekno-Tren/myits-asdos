@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\RekapAbsenController;
 use App\Http\Controllers\Admin\AbsensiController;
 use App\Http\Controllers\Admin\DetailController;
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -109,3 +110,16 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
+
+Route::get('/storage', function(){
+    Artisan::call('storage:link');
+    return "link process successfully completed";
+});
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+Route::get('/optimize', function() {
+    Artisan::call('optimize');
+    return "Optimize process successfully completed";
+});
