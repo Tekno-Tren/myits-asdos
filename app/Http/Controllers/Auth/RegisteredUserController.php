@@ -68,7 +68,7 @@ class RegisteredUserController extends Controller
             ->with('success', 'Berhasil mendaftar');
 
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Username atau NIK sudah terdaftar');
+            return redirect()->back()->with('error', 'Username atau NIK sudah terdaftar'. $e->getMessage());
         }
     }
 }
