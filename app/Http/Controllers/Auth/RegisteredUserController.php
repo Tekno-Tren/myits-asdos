@@ -6,19 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
-     *
-     * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(): View
     {
         return view('auth.register');
     }
@@ -26,29 +26,49 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     *
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'nama' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string'],
+            'departemen' => ['required', 'string'],
+            'telp' => ['required', 'string'],
+            'bank' => ['required', 'string'],
+            'norek' => ['required', 'string'],
+            'nik' => ['required', 'string', 'max:16'],
+            'alamat' => ['required', 'string'],
+            'password' => ['required'],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
 
-        event(new Registered($user));
+            $is_user = User::where('username', $request->username)->first();
+            if ($is_user) {
+                return redirect()->back()->with('error', 'Username sudah terdaftar');
+            }
 
-        Auth::login($user);
+            $user = User::create([
+                'nama' => $request->nama,
+                'username' => $request->username,
+                'departemen' => $request->departemen,
+                'telp' => $request->telp,
+                'bank' => $request->bank,
+                'norek' => $request->norek,
+                'nik' => $request->nik,
+                'alamat' => $request->alamat,
+                'password' => Hash::make($request->password),
+            ]);
 
-        return redirect(RouteServiceProvider::HOME);
+            event(new Registered($user));
+
+            return redirect()
+            ->route('login')
+            ->with('success', 'Berhasil mendaftar');
+
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Username atau NIK sudah terdaftar');
+        }
     }
 }
