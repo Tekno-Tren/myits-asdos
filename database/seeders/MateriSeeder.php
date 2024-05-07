@@ -67,4 +67,3 @@ class MateriSeeder extends Seeder
     }
 }
 
-

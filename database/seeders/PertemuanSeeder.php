@@ -30,4 +30,3 @@ class PertemuanSeeder extends Seeder
         }
     }
 }
-

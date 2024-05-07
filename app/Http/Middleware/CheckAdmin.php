@@ -18,7 +18,7 @@ class CheckAdmin
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-        
+
         if ($user && $user->departemen == '000') {
             return $next($request);
         } else {
