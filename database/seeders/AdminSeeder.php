@@ -28,7 +28,7 @@ class AdminSeeder extends Seeder
                 'id' => 2,
                 'nama' => 'suma',
                 'username' => '5002222111',
-                'password' => '$2y$12$XDQ.O2rea94iVREQRVRQ.OAfvNz9wsRLqSoQIzACtxtY9nRiP8K12',
+                'password' => 'adminpassword',
                 'updated_at' => '2024-02-20 10:10:01',
                 'created_at' => '2024-02-20 10:10:01',
             ],
