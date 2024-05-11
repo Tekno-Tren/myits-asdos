@@ -56,4 +56,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout-admin', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout-admin');
+
+    Route::get('/storage-link', function () {
+        Artisan::call('storage:link');
+    });
 });

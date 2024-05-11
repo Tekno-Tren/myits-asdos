@@ -34,26 +34,38 @@
                             </thead>
 
                             <tbody>
+
                                 @foreach ($nilai1 as $key => $row)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ $row->kelas->nama }}</td>
-                                        <td>
-                                            <a href="{{ url('/').'/storage/'.$row->file_path }}" target="blank" >{{ $row->filename }}</a>
-                                        </td>
-                                        <td>{{ $row->user->nama }}</td>
-                                        <td>
-                                                <div class="mx-1">
-                                                    <form action="{{route('admin.rekapnilai.destroy', $row->id)}}" method="post">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <input type="hidden" name="kelas_id" value="{{$row->id}}">
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </form>
-                                                </div>
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>
+                                        @if ($row->kelas)
+                                            {{ $row->kelas->nama }}
+                                        @else
+                                            <span class="text-danger">Kelas tidak ditemukan</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('/').'/storage/app/public'.$row->file_path }}" target="blank" >{{ $row->filename }}</a>
+                                    </td>
+                                    <td>@if ($row->user)
+                                        {{ $row->user->nama }}
+                                        @else
+                                            <span class="text-danger">Asisten Dosen tidak ditemukan</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                            <div class="mx-1">
+                                                <form action="{{route('admin.rekapnilai.destroy', $row->id)}}" method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <input type="hidden" name="kelas_id" value="{{$row->id}}">
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
                                             </div>
-                                        </td>
-                                    </tr>
+                                        </div>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
 
@@ -86,9 +98,15 @@
                                 @foreach ($nilai2 as $key => $row)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $row->kelas->nama }}</td>
                                         <td>
-                                            <a href="{{ url('/').'/storage/'.$row->file_path }}" target="blank" >{{ $row->filename }}</a>
+                                            @if ($row->kelas)
+                                                {{ $row->kelas->nama }}
+                                            @else
+                                                <span class="text-danger">Kelas tidak ditemukan</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/').'/storage/app/public'.$row->file_path }}" target="blank" >{{ $row->filename }}</a>
                                         </td>
                                         <td>{{ $row->user->nama }}</td>
                                         <td>
