@@ -76,6 +76,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.daftar-asdos') }}" class="nav-link active">
+                            <i class='bx bxs-folder'></i>
+                            <p>
+                                Administrasi Asdos
+                            </p>
+                        </a>
+                    </li>
                 </ul>
 
             </nav>

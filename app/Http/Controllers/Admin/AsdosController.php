@@ -7,13 +7,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ManagerialController {
+class AsdosController {
     public function index() {
 
-        $admin = User::where('departemen', '111')
-        ->orWhere('departemen', '000')
-        ->get();
-        return view('admin.managerial', compact('admin'));
+        $asdos = User::whereNotIn('departemen', ['111', '000'])->get();
+        return view('admin.asdos', compact('asdos'));
     }
 
     public function aktivate(Request $request, $id) {
@@ -39,5 +37,3 @@ class ManagerialController {
         return redirect()->back()->with('success', 'Admin berhasil dihapus');
     }
 }
-
-

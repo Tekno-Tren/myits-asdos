@@ -19,7 +19,8 @@ use App\Http\Controllers\Admin\RekapNilaiController;
 use App\Http\Controllers\Admin\RekapAbsenController;
 use App\Http\Controllers\Admin\AbsensiController;
 use App\Http\Controllers\Admin\DetailController;
-use App\Http\Controllers\Admin\ManagerialController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AsdosController;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -121,10 +122,14 @@ Route::middleware('auth')->group(function () {
         Route::post('/admin/tambahkelas/create', [TambahKelasController::class, 'store'])->name('tambahkelas.store');
         Route::delete('/admin/tambahkelas/destroy/{id}', [TambahKelasController::class, 'destroy'])->name('admin.tambahkelas.destroy');
 
-        Route::get('/admin/daftar-admin', [ManagerialController::class, 'index'])->name('admin.daftar-admin');
-        Route::get('/admin/aktivate-admin/{id}', [ManagerialController::class, 'aktivate'])->name('admin.aktivate');
-        Route::get('/admin/deaktivate-admin/{id}', [ManagerialController::class, 'deaktivate'])->name('admin.deaktivate');
-        Route::post('/admin/delete-admin', [ManagerialController::class, 'delete'])->name('admin.delete');
+        Route::get('/admin/daftar-admin', [AdminController::class, 'index'])->name('admin.daftar-admin');
+        Route::get('/admin/aktivate-admin/{id}', [AdminController::class, 'aktivate'])->name('admin.aktivate');
+        Route::get('/admin/deaktivate-admin/{id}', [AdminController::class, 'deaktivate'])->name('admin.deaktivate');
+        Route::post('/admin/delete-admin', [AdminController::class, 'delete'])->name('admin.delete');
+
+
+        Route::get('/admin/daftar-asdos', [AsdosController::class, 'index'])->name('admin.daftar-asdos');
+        Route::post('/admin/delete-asdos', [AsdosController::class, 'delete'])->name('admin.asdos.delete');
     });
 });
 
