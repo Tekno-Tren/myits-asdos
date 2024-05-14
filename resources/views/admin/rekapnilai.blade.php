@@ -48,8 +48,8 @@
                                     <td>
                                         <a href="{{ url('/').'/storage/app/public'.$row->file_path }}" target="blank" >{{ $row->filename }}</a>
                                     </td>
-                                    <td>@if ($row->user)
-                                        {{ $row->user->nama }}
+                                    <td>@if ($row->user->nama)
+                                            <span>{{ $row->user->nama != '' ? $row->user->nama : ' ' }}</span>
                                         @else
                                             <span class="text-danger">Asisten Dosen tidak ditemukan</span>
                                         @endif
@@ -108,7 +108,13 @@
                                         <td>
                                             <a href="{{ url('/').'/storage/app/public'.$row->file_path }}" target="blank" >{{ $row->filename }}</a>
                                         </td>
-                                        <td>{{ $row->user->nama }}</td>
+                                        <td>
+                                            @if ($row->user->nama)
+                                                <span>{{ $row->user->nama != '' ? $row->user->nama : ' ' }}</span>
+                                            @else
+                                                <span class="text-danger">Asisten Dosen tidak ditemukan</span>
+                                            @endif
+                                        </td>
                                         <td>
                                                 <div class="mx-1">
                                                     <form action="{{route('admin.rekapnilai.destroy', $row->id)}}" method="post">
