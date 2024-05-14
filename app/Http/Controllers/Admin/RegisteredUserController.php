@@ -71,4 +71,44 @@ class RegisteredUserController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+
+    public function adminStore(Request $request)
+    {
+
+        try {
+            $request->validate([
+                'nama' => ['required', 'string', 'max:255'],
+                'username' => ['required', 'string', 'max:16'],
+                'password' => ['required'],
+                'confirm_password' => ['required', 'same:password'],
+            ]);
+
+            $is_user = User::where('username', $request->username)->first();
+
+            if ($is_user) {
+                return redirect()->back()->with('error', 'Username sudah terdaftar');
+            }
+
+            $user = User::create([
+                'nama' => $request->nama,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'departemen' => '111',
+                'telp' => '000',
+                'bank' => '000',
+                'norek' => '000',
+                'nik' => '000',
+                'alamat' => '000'
+            ]);
+
+            event(new Registered($user));
+
+            return redirect()
+            ->route('login-admin')
+            ->with('success', 'Berhasil mendaftar');
+
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
 }

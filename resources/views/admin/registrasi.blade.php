@@ -38,7 +38,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="password" class="card-text">Konfirmasi Password :</label>
-                            <input type="password" name="password" id="password" class="form-control"
+                            <input type="password" name="confirm_password" id="password" class="form-control"
                                 value="{{ old('password') }}">
                         </div>
                         <div class="d-grid">

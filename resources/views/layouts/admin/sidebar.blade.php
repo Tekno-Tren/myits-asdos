@@ -60,19 +60,19 @@
                             </p>
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a href="pages/gallery.html" class="nav-link active">
-                            <i class='bx bxs-folder'></i>
-                            <p>
-                                Rekap Absen
-                            </p>
-                        </a>
-                    </li> --}}
                     <li class="nav-item">
                         <a href="/admin/rekapnilai" class="nav-link active">
                             <i class='bx bx-file'></i>
                             <p>
                                 Rekap Nilai
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.daftar-admin') }}" class="nav-link active">
+                            <i class='bx bxs-folder'></i>
+                            <p>
+                                Administrasi Admin
                             </p>
                         </a>
                     </li>
