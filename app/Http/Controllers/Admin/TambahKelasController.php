@@ -65,7 +65,6 @@ class TambahKelasController extends BaseController
 
     public function update(Request $request)
     {
-
         try {
             $request->validate([
                 'user_id' => ['required'],
@@ -85,7 +84,7 @@ class TambahKelasController extends BaseController
                 ]);
             return redirect()->back()->with('success', 'Kelas berhasil di update');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Kelas gagal ditambahkan');
+            return redirect()->back()->with('error', 'Kelas gagal ditambahkan',);
         }
     }
 

@@ -46,16 +46,23 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $row->nama }}</td>
                                         <td>{{ $row->nama_dosen }}</td>
-                                        <td>{{ $row->user->nama }}</td>
+                                        <td>
+                                            @if ($row->user != null)
+                                                <span>{{ $row->user->nama != '' ? $row->user->nama : 'pengguna tidak ditemukan' }}</span>
+                                            @else
+                                                <span class="text-danger">Belum diplotting</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="d-flex flex-justify-content-between">
                                                 <a href="{{ route('admin.jadwaledit', $row->id) }}"
                                                     class="btn btn-secondary mx-1">Edit</a>
                                                 <div class="mx-1">
-                                                    <form action="{{route('admin.jadwal.destroy', $row->id)}}" method="post">
+                                                    <form action="{{ route('admin.jadwal.destroy', $row->id) }}"
+                                                        method="post">
                                                         @method('DELETE')
                                                         @csrf
-                                                        <input type="hidden" name="kelas_id" value="{{$row->id}}">
+                                                        <input type="hidden" name="kelas_id" value="{{ $row->id }}">
                                                         <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
                                                 </div>
@@ -99,7 +106,6 @@
                                         <select name="kelas_id" class="form-select" aria-label="Default select example"
                                             required>
                                             <option selected>Pilih Kelas</option>
-
                                             @foreach ($kelas_plotting as $row)
                                                 <option value="{{ $row->id }}">{{ $row->nama }}</option>
                                             @endforeach
@@ -166,23 +172,24 @@
     </section>
 
     {{-- next pop up delete --}}
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
             </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 @endsection
 
 @section('scripts')

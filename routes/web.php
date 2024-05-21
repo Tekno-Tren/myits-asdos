@@ -121,6 +121,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/admin/tambahkelas/show', [TambahKelasController::class, 'update'])->name('admin.kelasedit.update');
         Route::post('/admin/tambahkelas/create', [TambahKelasController::class, 'store'])->name('tambahkelas.store');
         Route::delete('/admin/tambahkelas/destroy/{id}', [TambahKelasController::class, 'destroy'])->name('admin.tambahkelas.destroy');
+        Route::post('/admin/asdos-edit', [AsdosController::class, 'update'])->name('admin.asdosedit');
 
         Route::get('/admin/daftar-admin', [AdminController::class, 'index'])->name('admin.daftar-admin');
         Route::get('/admin/aktivate-admin/{id}', [AdminController::class, 'aktivate'])->name('admin.aktivate');

@@ -37,7 +37,13 @@
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $row->nama }}</td>
-                                        <td>{{ $row->user->nama }}</td>
+                                        <td>
+                                            @if ($row->user != null)
+                                                <span>{{ $row->user->nama != '' ? $row->user->nama : 'pengguna tidak ditemukan' }}</span>
+                                            @else
+                                                <span class="text-danger">Belum diplotting</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="mx-1">
                                                 <a href="{{ route('admin.detail.rekap', $row->id) }}"

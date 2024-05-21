@@ -36,44 +36,47 @@
                             <tbody>
 
                                 @foreach ($nilai1 as $key => $row)
-                                <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td>
-                                        @if ($row->kelas)
-                                            {{ $row->kelas->nama }}
-                                        @else
-                                            <span class="text-danger">Kelas tidak ditemukan</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{ url('/').'/storage/app/public'.$row->file_path }}" target="blank" >{{ $row->filename }}</a>
-                                    </td>
-                                    <td>@if ($row->user->nama)
-                                            <span>{{ $row->user->nama != '' ? $row->user->nama : ' ' }}</span>
-                                        @else
-                                            <span class="text-danger">Asisten Dosen tidak ditemukan</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                            <div class="mx-1">
-                                                <form action="{{route('admin.rekapnilai.destroy', $row->id)}}" method="post">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <input type="hidden" name="kelas_id" value="{{$row->id}}">
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-
-                        </table>
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>
+                                            @if ($row->kelas)
+                                                {{ $row->kelas->nama }}
+                                            @else
+                                                <span class="text-danger">Kelas tidak ditemukan</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/') . '/storage/app/public' . $row->file_path }}"
+                                                target="blank">{{ $row->filename }}</a>
+                                        </td>
+                                        <td>
+                                            @if (isset($row->user->nama))
+                                        <td>{{ $row->user->nama != '' ? $row->user->nama : 'pengguna tidak ditemukan' }}
+                                        </td>
+                                    @else
+                                        <span class="text-danger">Asisten Dosen tidak ditemukan</span>
+                                @endif
+                                </td>
+                                <td>
+                                    <div class="mx-1">
+                                        <form action="{{ route('admin.rekapnilai.destroy', $row->id) }}" method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <input type="hidden" name="kelas_id" value="{{ $row->id }}">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
                     </div>
-                    <!-- /.card-body -->
+                    </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+
+                    </table>
                 </div>
+                <!-- /.card-body -->
             </div>
+        </div>
         </div>
         <div class="row">
             <div class="col-12">
@@ -106,39 +109,40 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ url('/').'/storage/app/public'.$row->file_path }}" target="blank" >{{ $row->filename }}</a>
+                                            <a href="{{ url('/') . '/storage/app/public' . $row->file_path }}"
+                                                target="blank">{{ $row->filename }}</a>
                                         </td>
                                         <td>
-                                            @if ($row->user->nama)
-                                                <span>{{ $row->user->nama != '' ? $row->user->nama : ' ' }}</span>
+                                            @if (isset($row->user->nama))
+                                                {{ $row->user->nama != '' ? $row->user->nama : 'pengguna tidak ditemukan' }}
                                             @else
                                                 <span class="text-danger">Asisten Dosen tidak ditemukan</span>
                                             @endif
                                         </td>
-                                        <td>
-                                                <div class="mx-1">
-                                                    <form action="{{route('admin.rekapnilai.destroy', $row->id)}}" method="post">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <input type="hidden" name="kelas_id" value="{{$row->id}}">
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </form>
-                                                </div>
-                                            </div>
                                         </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-
-                        </table>
+                                        <td>
+                                            <div class="mx-1">
+                                                <form action="{{ route('admin.rekapnilai.destroy', $row->id) }}"
+                                                    method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <input type="hidden" name="kelas_id" value="{{ $row->id }}">
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </div>
                     </div>
-                    <!-- /.card-body -->
+                    </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+
+                    </table>
                 </div>
+                <!-- /.card-body -->
             </div>
         </div>
+        </div>
     </section>
-
-
 @endsection
 
 @section('scripts')

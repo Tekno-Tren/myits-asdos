@@ -17,7 +17,9 @@ class JadwalController extends BaseController
     public function index()
     {
         $asdos = User::where('departemen', '!=', '000')->get();
+        //year 2023/2024
         $this_year = date('Y');
+        $academic_year = ($this_year-1) . '/' . ($this_year);
         $this_month = date('m');
         $months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 
@@ -30,11 +32,11 @@ class JadwalController extends BaseController
 
         // Melanjutkan dengan kode untuk mengambil data kelas berdasarkan semester
         if ($is_semester) {
-            $kelas = Kelas::where('tahun', $this_year)
+            $kelas = Kelas::where('tahun', $academic_year)
                 ->where('semester', $is_semester)
                 ->where('user_id', "!=", null)
                 ->get();
-            $kelas_plotting = Kelas::where('tahun', $this_year)
+            $kelas_plotting = Kelas::where('tahun', $academic_year)
                 ->where('semester', $is_semester)
                 ->where('user_id', null)
                 ->get();
@@ -78,8 +80,9 @@ class JadwalController extends BaseController
 
     public function destroy(Request $request) {
 
-        Kelas::where('id', $request->kelas_id)
-        ->delete();
+        $kelas = Kelas::where('id', $request->id)->first();
+        $kelas->user_id = null;
+        $kelas->save();
 
         return redirect()->back()->with('success', 'Kelas telah terhapus');
     }

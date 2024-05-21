@@ -36,4 +36,26 @@ class AsdosController {
 
         return redirect()->back()->with('success', 'Admin berhasil dihapus');
     }
+
+    public function update(Request $request) {
+
+        try {
+            $id = $request->id;
+            $admin = User::where('id', $id)->first();
+            $admin->nama = $request->nama;
+            $admin->username = $request->username;
+            $admin->nik = $request->nik;
+            $admin->departemen = $request->departemen;
+            $admin->telp = $request->telp;
+            $admin->bank = $request->bank;
+            $admin->norek = $request->norek;
+            $admin->alamat = $request->alamat;
+            $admin->password = isset($request->password) ? bcrypt($request->password) : $admin->password;
+            $admin->save();
+
+            return redirect()->back()->with('success', 'Admin berhasil diupdate');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Admin gagal diupdate');
+        }
+    }
 }
